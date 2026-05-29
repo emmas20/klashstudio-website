@@ -17,18 +17,22 @@
     <span><a href="mailto:lashkstudio1@gmail.com">lashkstudio1@gmail.com</a></span>
   </div>
 
-  <header class="site-header">
-<button class="menu-toggle" id="menuToggle" aria-label="Open navigation">☰</button>
+<header class="site-header">
+  <a class="logo" href="#home">LashK<span>studio</span>♡</a>
 
-<nav id="navMenu">
-  <a href="#about">About</a>
-  <a href="#services">Services</a>
-  <a href="#policies">Policies</a>
-  <a href="#gallery">Gallery</a>
-  <a href="#contact">Contact</a>
-  <a class="nav-button" href="https://lashkstudio.square.site" target="_blank" rel="noopener">Book Now ✧</a>
-</nav>
-  </header>
+  <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open navigation">
+    ☰
+  </button>
+
+  <nav id="navMenu">
+    <a href="#about" onclick="toggleMenu()">About</a>
+    <a href="#services" onclick="toggleMenu()">Services</a>
+    <a href="#policies" onclick="toggleMenu()">Policies</a>
+    <a href="#gallery" onclick="toggleMenu()">Gallery</a>
+    <a href="#contact" onclick="toggleMenu()">Contact</a>
+    <a class="nav-button" href="https://lashkstudio.square.site" target="_blank" rel="noopener">Book Now ✧</a>
+  </nav>
+</header>
 
   <main>
     <section class="hero" id="home">
