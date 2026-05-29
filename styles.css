@@ -394,9 +394,18 @@ footer .logo {
     display: block;
   }
 
-  nav {
-    display: none;
-  }
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.menu-toggle {
+  display: none;
+}
 
   nav.active {
     display: flex;
