@@ -192,7 +192,10 @@ h1 span {
 }
 
 .about-grid img {
-  width: 100%;
+  width: 360px;
+  height: 500px;
+  object-fit: cover;
+  object-position: center 45%;
   border-radius: 35px;
 }
 
