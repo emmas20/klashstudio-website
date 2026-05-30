@@ -560,3 +560,26 @@ footer .logo {
     font-size: 34px;
   }
 }
+
+.deposit-confirmation {
+  background: white;
+  border: 1px solid #ffd3e4;
+  border-radius: 24px;
+  padding: 28px;
+  margin-top: 20px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(232, 93, 148, 0.08);
+}
+
+.deposit-confirmation p {
+  margin-bottom: 18px;
+  line-height: 1.6;
+}
+
+.hidden-form {
+  display: none;
+}
+
+.hidden-form.show {
+  display: flex;
+}

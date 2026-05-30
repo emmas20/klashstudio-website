@@ -191,7 +191,14 @@
           </ul>
         </div>
 
-        <form class="booking-form" id="bookingForm">
+        <div class="deposit-confirmation">
+  <p>After paying your $15 deposit, click below to continue to the booking form.</p>
+  <button class="button secondary" type="button" id="showBookingForm">
+    I paid my deposit, continue to booking form
+  </button>
+</div>
+
+<form class="booking-form hidden-form" id="bookingForm">
           <h3>Step 2: Booking + Consent Form</h3>
 
           <input type="text" name="clientName" placeholder="Full Name" required />
@@ -292,7 +299,18 @@ function toggleMenu() {
     navMenu.classList.toggle("active");
   }
 }
+const showBookingFormButton = document.getElementById("showBookingForm");
 
+if (showBookingFormButton) {
+  showBookingFormButton.addEventListener("click", function () {
+    const bookingForm = document.getElementById("bookingForm");
+
+    if (bookingForm) {
+      bookingForm.classList.add("show");
+      bookingForm.scrollIntoView({ behavior: "smooth" });
+    }
+  });
+}
 const bookingForm = document.getElementById("bookingForm");
 
 if (bookingForm) {
