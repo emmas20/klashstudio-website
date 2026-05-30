@@ -406,9 +406,19 @@ async function loadAvailableTimes() {
 
   timeSelect.innerHTML = '<option value="">Select a Time</option>';
 
-  const availableTimes = openTimes.filter(function (time) {
-    return !unavailableTimes.includes(time[0]);
-  });
+  const now = new Date();
+const todayString = now.toISOString().split("T")[0];
+
+const availableTimes = openTimes.filter(function (time) {
+  const isBooked = unavailableTimes.includes(time[0]);
+
+  const [hours, minutes] = time[0].split(":").map(Number);
+  const slotDateTime = new Date(dateInput.value + "T" + time[0] + ":00");
+
+  const isPastToday = dateInput.value === todayString && slotDateTime <= now;
+
+  return !isBooked && !isPastToday;
+});
 
   if (availableTimes.length === 0) {
     timeSelect.innerHTML = '<option value="">No times available this day</option>';
