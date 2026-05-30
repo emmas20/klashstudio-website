@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Parisienne&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
   <div class="top-bar">
     <span>📍 Calgary, AB</span>
@@ -17,22 +18,22 @@
     <span><a href="mailto:lashkstudio1@gmail.com">lashkstudio1@gmail.com</a></span>
   </div>
 
-<header class="site-header">
-  <a class="logo" href="#home">LashK<span>studio</span>♡</a>
+  <header class="site-header">
+    <a class="logo" href="#home">LashK<span>studio</span>♡</a>
 
-  <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open navigation">
-    ☰
-  </button>
+    <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open navigation">
+      ☰
+    </button>
 
-  <nav id="navMenu">
-    <a href="#about" onclick="toggleMenu()">About</a>
-    <a href="#services" onclick="toggleMenu()">Services</a>
-    <a href="#policies" onclick="toggleMenu()">Policies</a>
-    <a href="#gallery" onclick="toggleMenu()">Gallery</a>
-    <a href="#contact" onclick="toggleMenu()">Contact</a>
-    <a class="nav-button" href="https://lashkstudio.square.site" target="_blank" rel="noopener">Book Now ✧</a>
-  </nav>
-</header>
+    <nav id="navMenu">
+      <a href="#about" onclick="toggleMenu()">About</a>
+      <a href="#services" onclick="toggleMenu()">Services</a>
+      <a href="#policies" onclick="toggleMenu()">Policies</a>
+      <a href="#gallery" onclick="toggleMenu()">Gallery</a>
+      <a href="#contact" onclick="toggleMenu()">Contact</a>
+      <a class="nav-button" href="#booking" onclick="toggleMenu()">Book Now ✧</a>
+    </nav>
+  </header>
 
   <main>
     <section class="hero" id="home">
@@ -40,10 +41,12 @@
         <p class="eyebrow">LashKStudio</p>
         <h1>Enhancing your natural <span>beauty</span></h1>
         <p class="hero-subtitle">Custom lash sets made to fit your features, lifestyle, and dream lash look.</p>
+
         <div class="hero-actions">
-          <a class="button primary" href="https://lashkstudio.square.site" target="_blank" rel="noopener">Book Your Appointment</a>
+          <a class="button primary" href="#booking">Book Your Appointment</a>
           <a class="button secondary" href="#services">View Services</a>
         </div>
+
         <div class="features">
           <span>♡ 3x Certified</span>
           <span>✧ Clean Studio</span>
@@ -68,7 +71,7 @@
         <div>
           <p>I’m a 3x certified lash artist based in Calgary, Alberta. My goal is to help every client feel confident and beautiful through customized lash extensions that enhance their natural features.</p>
           <p>Whether you want a soft everyday set or a fuller glam look, I create lashes that match your style while keeping your natural lashes in mind.</p>
-          <a class="button primary" href="https://lashkstudio.square.site" target="_blank" rel="noopener">Book with Kira</a>
+          <a class="button primary" href="#booking">Book with Kira</a>
         </div>
       </div>
     </section>
@@ -119,7 +122,7 @@
       </div>
 
       <div class="center">
-        <a class="button primary" href="https://lashkstudio.square.site" target="_blank" rel="noopener">Book Through Square</a>
+        <a class="button primary" href="#booking">Book Appointment</a>
       </div>
     </section>
 
@@ -130,7 +133,7 @@
       </div>
 
       <div class="policy-grid">
-        <article><h3>Deposit</h3><p>A $15 non-refundable but transferable deposit goes toward your service and is required to book all appointments.</p></article>
+        <article><h3>Deposit</h3><p>A $15 non-refundable deposit goes toward your service and is required to book all appointments.</p></article>
         <article><h3>Late Arrival</h3><p>Please arrive on time. There is a 10 minute grace period. Arriving late may reduce appointment time and may result in an incomplete look.</p></article>
         <article><h3>Refunds</h3><p>Strictly no refunds. Complimentary touch ups are offered for any issues within 72 hours.</p></article>
         <article><h3>Guests</h3><p>You are allowed to bring 1 guest. Extra seating space is limited in the home studio.</p></article>
@@ -161,9 +164,104 @@
       </div>
     </section>
 
+    <section class="section booking" id="booking">
+      <div class="section-heading">
+        <p class="eyebrow">Book Online</p>
+        <h2>Book Your Lash Appointment ♡</h2>
+      </div>
+
+      <div class="booking-wrapper">
+        <div class="booking-info">
+          <h3>Step 1: Pay Deposit</h3>
+          <p>A $15 non-refundable deposit is required before submitting your booking form. The deposit goes toward your service.</p>
+
+          <a class="button primary" href="https://square.link/u/ZAE3RY17" target="_blank" rel="noopener">
+            Pay $15 Deposit
+          </a>
+
+          <h3>Booking Hours</h3>
+          <ul class="hours-list">
+            <li><span>Monday</span><strong>10:00 AM–5:30 PM</strong></li>
+            <li><span>Tuesday</span><strong>10:00 AM–5:30 PM</strong></li>
+            <li><span>Wednesday</span><strong>Closed</strong></li>
+            <li><span>Thursday</span><strong>10:00 AM–5:30 PM</strong></li>
+            <li><span>Friday</span><strong>10:00 AM–5:30 PM</strong></li>
+            <li><span>Saturday</span><strong>9:30 AM–3:00 PM</strong></li>
+            <li><span>Sunday</span><strong>Closed</strong></li>
+          </ul>
+        </div>
+
+        <form class="booking-form" id="bookingForm">
+          <h3>Step 2: Booking + Consent Form</h3>
+
+          <input type="text" name="clientName" placeholder="Full Name" required />
+          <input type="email" name="clientEmail" placeholder="Email Address" required />
+          <input type="tel" name="clientPhone" placeholder="Phone Number" required />
+
+          <select name="serviceName" required>
+            <option value="">Select a Service</option>
+            <option>Classic Set</option>
+            <option>Hybrid Set</option>
+            <option>Volume Set</option>
+            <option>Mega Volume Set</option>
+            <option>Wispy Set</option>
+            <option>Anime Set</option>
+            <option>Wet Set</option>
+            <option>Classic Set - 2 Week Infill</option>
+            <option>Hybrid Set - 2 Week Infill</option>
+            <option>Volume Set - 2 Week Infill</option>
+            <option>Mega Volume Set - 2 Week Infill</option>
+            <option>Wispy Set - 2 Week Infill</option>
+            <option>Anime Set - 2 Week Infill</option>
+            <option>Classic Set - 3 Week Infill</option>
+            <option>Hybrid Set - 3 Week Infill</option>
+            <option>Volume Set - 3 Week Infill</option>
+            <option>Mega Volume Set - 3 Week Infill</option>
+            <option>Wispy Set - 3 Week Infill</option>
+            <option>Anime Set - 3 Week Infill</option>
+          </select>
+
+          <input type="date" name="preferredDate" required />
+          <input type="time" name="preferredTime" required />
+
+          <input type="text" name="depositName" placeholder="Name/email used for Square deposit payment" required />
+          <input type="text" name="allergies" placeholder="Any allergies? Please list." />
+
+          <select name="wearsGlasses" required>
+            <option value="">Do you wear glasses?</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+
+          <select name="wearsContacts" required>
+            <option value="">Do you wear contact lenses?</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+
+          <textarea name="notes" placeholder="Any notes, requests, or concerns?"></textarea>
+
+          <div class="consent-box">
+            <h4>Consent Agreement</h4>
+            <label><input type="checkbox" required /> I consent to the application, removal, and/or retouching of eyelash extensions.</label>
+            <label><input type="checkbox" required /> I understand the risks associated with eyelash extensions.</label>
+            <label><input type="checkbox" required /> I understand irritation, redness, itching, and watering of the eyes may occur.</label>
+            <label><input type="checkbox" required /> I agree to follow aftercare instructions.</label>
+            <label><input type="checkbox" required /> I understand deposits are non-refundable.</label>
+            <label><input type="checkbox" required /> I consent to this agreement and eyelash extension application/removal.</label>
+          </div>
+
+          <input type="text" name="signature" placeholder="Type your full name as your signature" required />
+
+          <button class="button primary" type="submit">Submit Booking Form</button>
+          <p class="form-message" id="formMessage"></p>
+        </form>
+      </div>
+    </section>
+
     <section class="cta">
       <h2>Ready to book your next set?</h2>
-      <a class="button light" href="https://lashkstudio.square.site" target="_blank" rel="noopener">Book Now ✧</a>
+      <a class="button light" href="#booking">Book Now ✧</a>
     </section>
 
     <section class="section contact" id="contact">
@@ -176,7 +274,7 @@
         <p><strong>Instagram:</strong> <a href="https://www.instagram.com/lashkstudio" target="_blank" rel="noopener">@lashkstudio</a></p>
         <p><strong>Email:</strong> <a href="mailto:lashkstudio1@gmail.com">lashkstudio1@gmail.com</a></p>
         <p><strong>Phone:</strong> <a href="tel:5878342940">587-834-2940</a></p>
-        <p><strong>Booking:</strong> <a href="https://lashkstudio.square.site" target="_blank" rel="noopener">lashkstudio.square.site</a></p>
+        <p><strong>Booking:</strong> <a href="#booking">Book through website form</a></p>
       </div>
     </section>
   </main>
