@@ -340,27 +340,32 @@ h1 span {
 
 .booking-wrapper {
   display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
   gap: 35px;
   max-width: 1100px;
   margin: 0 auto;
 }
-
 .booking-info,
 .booking-form {
-  background: white;
-  border: 1px solid #ffd3e4;
-  border-radius: 24px;
-  padding: 28px;
-  box-shadow: 0 10px 25px rgba(232, 93, 148, 0.08);
+  align-self: start;
+  height: auto;
 }
+
 
 .booking-form {
   display: flex;
   flex-direction: column;
   gap: 14px;
   max-width: 760px;
-  margin: 30px auto;
+  margin: 0 auto;
+  height: fit-content;
+  align-self: start;
+}
+
+.booking-info {
+  height: fit-content;
+  align-self: start;
 }
 
 .booking-info h3,
@@ -561,4 +566,14 @@ footer .logo {
   .cta h2 {
     font-size: 34px;
   }
+}
+
+.booking-info {
+  display: block;
+  height: fit-content !important;
+  min-height: 0 !important;
+}
+
+.booking-wrapper {
+  align-items: start !important;
 }
