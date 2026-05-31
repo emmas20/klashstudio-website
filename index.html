@@ -21,9 +21,7 @@
   <header class="site-header">
     <a class="logo" href="#home">LashK<span>studio</span>♡</a>
 
-    <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open navigation">
-      ☰
-    </button>
+    <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open navigation">☰</button>
 
     <nav id="navMenu">
       <a href="#about" onclick="toggleMenu()">About</a>
@@ -43,7 +41,6 @@
         <p class="hero-subtitle">Custom lash sets made to fit your features, lifestyle, and dream lash look.</p>
 
         <div class="hero-actions">
-          <a class="button primary" href="#booking">Book Your Appointment</a>
           <a class="button secondary" href="#services">View Services</a>
         </div>
 
@@ -71,7 +68,6 @@
         <div>
           <p>I’m a 3x certified lash artist based in Calgary, Alberta. My goal is to help every client feel confident and beautiful through customized lash extensions that enhance their natural features.</p>
           <p>Whether you want a soft everyday set or a fuller glam look, I create lashes that match your style while keeping your natural lashes in mind.</p>
-          <a class="button primary" href="#booking">Book with Kira</a>
         </div>
       </div>
     </section>
@@ -119,10 +115,6 @@
             <li><span>Anime</span><strong>$70</strong></li>
           </ul>
         </div>
-      </div>
-
-      <div class="center">
-        <a class="button primary" href="#booking">Book Appointment</a>
       </div>
     </section>
 
@@ -191,8 +183,7 @@
           </ul>
         </div>
 
-
-  <form class="booking-form hidden-form" id="bookingForm"></form>
+        <form class="booking-form" id="bookingForm">
           <h3>Step 2: Booking + Consent Form</h3>
 
           <input type="text" name="clientName" placeholder="Full Name" required />
@@ -222,11 +213,11 @@
             <option>Anime Set - 3 Week Infill</option>
           </select>
 
-          <input type="date" name="preferredDate" id="preferredDate" required>
+          <input type="date" name="preferredDate" id="preferredDate" required />
 
-<select name="preferredTime" id="preferredTime" required>
-  <option value="">Select a date first</option>
-</select>
+          <select name="preferredTime" id="preferredTime" required>
+            <option value="">Select a date first</option>
+          </select>
 
           <input type="text" name="depositName" placeholder="Name/email used for Square deposit payment" required />
           <input type="text" name="allergies" placeholder="Any allergies? Please list." />
@@ -263,11 +254,6 @@
       </div>
     </section>
 
-    <section class="cta">
-      <h2>Ready to book your next set?</h2>
-      <a class="button light" href="#booking">Book Now ✧</a>
-    </section>
-
     <section class="section contact" id="contact">
       <div class="section-heading">
         <p class="eyebrow">Contact</p>
@@ -278,7 +264,6 @@
         <p><strong>Instagram:</strong> <a href="https://www.instagram.com/lashkstudio" target="_blank" rel="noopener">@lashkstudio</a></p>
         <p><strong>Email:</strong> <a href="mailto:lashkstudio1@gmail.com">lashkstudio1@gmail.com</a></p>
         <p><strong>Phone:</strong> <a href="tel:5878342940">587-834-2940</a></p>
-        <p><strong>Booking:</strong> <a href="#booking">Book through website form</a></p>
       </div>
     </section>
   </main>
@@ -290,182 +275,208 @@
   </footer>
 
   <script>
-function toggleMenu() {
-  const navMenu = document.getElementById("navMenu");
-  if (navMenu) {
-    navMenu.classList.toggle("active");
-  }
-}
-
-
-const bookingForm = document.getElementById("bookingForm");
-const dateInput = document.querySelector('input[name="preferredDate"]');
-const timeSelect = document.querySelector('select[name="preferredTime"]');
-const today = new Date().toISOString().split("T")[0];
-
-if (dateInput) {
-  dateInput.setAttribute("min", today);
-}
-
-const availabilityWebhookUrl = "https://esargsyan.app.n8n.cloud/webhook/lashkstudio-check-availability";
-const bookingWebhookUrl = "https://esargsyan.app.n8n.cloud/webhook/lashkstudio-booking-emails";
-
-function getOpenTimesForDate(dateValue) {
-  const selectedDate = new Date(dateValue + "T12:00:00");
-  const day = selectedDate.getDay();
-
-  if (day === 1 || day === 2 || day === 4 || day === 5) {
-    return [
-      ["10:00", "10:00 AM"],
-      ["10:30", "10:30 AM"],
-      ["11:00", "11:00 AM"],
-      ["11:30", "11:30 AM"],
-      ["12:00", "12:00 PM"],
-      ["12:30", "12:30 PM"],
-      ["13:00", "1:00 PM"],
-      ["13:30", "1:30 PM"],
-      ["14:00", "2:00 PM"],
-      ["14:30", "2:30 PM"],
-      ["15:00", "3:00 PM"],
-      ["15:30", "3:30 PM"],
-      ["16:00", "4:00 PM"],
-      ["16:30", "4:30 PM"],
-      ["17:00", "5:00 PM"]
-    ];
-  }
-
-  if (day === 6) {
-    return [
-      ["09:30", "9:30 AM"],
-      ["10:00", "10:00 AM"],
-      ["10:30", "10:30 AM"],
-      ["11:00", "11:00 AM"],
-      ["11:30", "11:30 AM"],
-      ["12:00", "12:00 PM"],
-      ["12:30", "12:30 PM"],
-      ["13:00", "1:00 PM"],
-      ["13:30", "1:30 PM"],
-      ["14:00", "2:00 PM"],
-      ["14:30", "2:30 PM"]
-    ];
-  }
-
-  return [];
-}
-
-async function loadAvailableTimes() {
-  if (!dateInput || !timeSelect || !dateInput.value) return;
-
-  timeSelect.innerHTML = '<option value="">Checking availability...</option>';
-
-  const openTimes = getOpenTimesForDate(dateInput.value);
-
-  if (openTimes.length === 0) {
-    timeSelect.innerHTML = '<option value="">Closed on this day</option>';
-    return;
-  }
-
-  let unavailableTimes = [];
-
-  try {
-    const response = await fetch(availabilityWebhookUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        preferredDate: dateInput.value
-      })
-    });
-
-    if (response.ok) {
-      const data = await response.json();
-      unavailableTimes = data.unavailableTimes || [];
+    function toggleMenu() {
+      const navMenu = document.getElementById("navMenu");
+      if (navMenu) {
+        navMenu.classList.toggle("active");
+      }
     }
-  } catch (error) {
-    console.log("Could not check live availability:", error);
-  }
 
-  timeSelect.innerHTML = '<option value="">Select a Time</option>';
+    const bookingForm = document.getElementById("bookingForm");
+    const dateInput = document.querySelector('input[name="preferredDate"]');
+    const timeSelect = document.querySelector('select[name="preferredTime"]');
 
-  const now = new Date();
-const todayString = now.toISOString().split("T")[0];
+    const availabilityWebhookUrl = "https://esargsyan.app.n8n.cloud/webhook/lashkstudio-check-availability";
+    const bookingWebhookUrl = "https://esargsyan.app.n8n.cloud/webhook/lashkstudio-booking-emails";
 
-const availableTimes = openTimes.filter(function (time) {
-  const isBooked = unavailableTimes.includes(time[0]);
-
-  const [hours, minutes] = time[0].split(":").map(Number);
-  const slotDateTime = new Date(dateInput.value + "T" + time[0] + ":00");
-
-  const isPastToday = dateInput.value === todayString && slotDateTime <= now;
-
-  return !isBooked && !isPastToday;
-});
-
-  if (availableTimes.length === 0) {
-    timeSelect.innerHTML = '<option value="">No times available this day</option>';
-    return;
-  }
-
-  availableTimes.forEach(function (time) {
-    const option = document.createElement("option");
-    option.value = time[0];
-    option.textContent = time[1];
-    timeSelect.appendChild(option);
-  });
-}
-
-if (dateInput && timeSelect) {
-  dateInput.addEventListener("change", loadAvailableTimes);
-}
-
-if (bookingForm) {
-  bookingForm.addEventListener("submit", async function (event) {
-    event.preventDefault();
-
-    const formMessage = document.getElementById("formMessage");
-    const formData = new FormData(bookingForm);
-
-    const bookingData = {
-      clientName: formData.get("clientName"),
-      clientEmail: formData.get("clientEmail"),
-      clientPhone: formData.get("clientPhone"),
-      serviceName: formData.get("serviceName"),
-      preferredDate: formData.get("preferredDate"),
-      preferredTime: formData.get("preferredTime"),
-      depositName: formData.get("depositName"),
-      allergies: formData.get("allergies"),
-      wearsGlasses: formData.get("wearsGlasses"),
-      wearsContacts: formData.get("wearsContacts"),
-      notes: formData.get("notes"),
-      consentAgreed: true,
-      signature: formData.get("signature")
-    };
-
-    try {
-      const response = await fetch(bookingWebhookUrl, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(bookingData)
+    function getTodayInCalgary() {
+      const formatter = new Intl.DateTimeFormat("en-CA", {
+        timeZone: "America/Edmonton",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit"
       });
 
-      if (response.ok) {
-        formMessage.textContent = "Your booking form has been submitted successfully 💕";
-        bookingForm.reset();
-
-        if (timeSelect) {
-          timeSelect.innerHTML = '<option value="">Select a Date First</option>';
-        }
-      } else {
-        formMessage.textContent = "Something went wrong. Please try again or contact LashKStudio.";
-      }
-    } catch (error) {
-      formMessage.textContent = "There was an error submitting the form. Please try again.";
+      return formatter.format(new Date());
     }
-  });
-}
-</script>
+
+    function getCalgaryNowMinutes() {
+      const parts = new Intl.DateTimeFormat("en-US", {
+        timeZone: "America/Edmonton",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false
+      }).formatToParts(new Date());
+
+      const hours = Number(parts.find(part => part.type === "hour").value);
+      const minutes = Number(parts.find(part => part.type === "minute").value);
+
+      return hours * 60 + minutes;
+    }
+
+    const today = getTodayInCalgary();
+
+    if (dateInput) {
+      dateInput.setAttribute("min", today);
+    }
+
+    function getOpenTimesForDate(dateValue) {
+      const selectedDate = new Date(dateValue + "T12:00:00");
+      const day = selectedDate.getDay();
+
+      if (day === 1 || day === 2 || day === 4 || day === 5) {
+        return [
+          ["10:00", "10:00 AM"],
+          ["10:30", "10:30 AM"],
+          ["11:00", "11:00 AM"],
+          ["11:30", "11:30 AM"],
+          ["12:00", "12:00 PM"],
+          ["12:30", "12:30 PM"],
+          ["13:00", "1:00 PM"],
+          ["13:30", "1:30 PM"],
+          ["14:00", "2:00 PM"],
+          ["14:30", "2:30 PM"],
+          ["15:00", "3:00 PM"],
+          ["15:30", "3:30 PM"],
+          ["16:00", "4:00 PM"],
+          ["16:30", "4:30 PM"],
+          ["17:00", "5:00 PM"]
+        ];
+      }
+
+      if (day === 6) {
+        return [
+          ["09:30", "9:30 AM"],
+          ["10:00", "10:00 AM"],
+          ["10:30", "10:30 AM"],
+          ["11:00", "11:00 AM"],
+          ["11:30", "11:30 AM"],
+          ["12:00", "12:00 PM"],
+          ["12:30", "12:30 PM"],
+          ["13:00", "1:00 PM"],
+          ["13:30", "1:30 PM"],
+          ["14:00", "2:00 PM"],
+          ["14:30", "2:30 PM"]
+        ];
+      }
+
+      return [];
+    }
+
+    function timeToMinutes(timeValue) {
+      const [hours, minutes] = timeValue.split(":").map(Number);
+      return hours * 60 + minutes;
+    }
+
+    async function loadAvailableTimes() {
+      if (!dateInput || !timeSelect || !dateInput.value) return;
+
+      timeSelect.innerHTML = '<option value="">Checking availability...</option>';
+
+      const openTimes = getOpenTimesForDate(dateInput.value);
+
+      if (openTimes.length === 0) {
+        timeSelect.innerHTML = '<option value="">Closed on this day</option>';
+        return;
+      }
+
+      let unavailableTimes = [];
+
+      try {
+        const response = await fetch(availabilityWebhookUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            preferredDate: dateInput.value
+          })
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          unavailableTimes = data.unavailableTimes || [];
+        }
+      } catch (error) {
+        console.log("Could not check live availability:", error);
+      }
+
+      const todayString = getTodayInCalgary();
+      const nowMinutes = getCalgaryNowMinutes();
+
+      const availableTimes = openTimes.filter(function (time) {
+        const isBooked = unavailableTimes.includes(time[0]);
+        const isPastToday = dateInput.value === todayString && timeToMinutes(time[0]) <= nowMinutes;
+
+        return !isBooked && !isPastToday;
+      });
+
+      if (availableTimes.length === 0) {
+        timeSelect.innerHTML = '<option value="">No times available this day</option>';
+        return;
+      }
+
+      timeSelect.innerHTML = '<option value="">Select a Time</option>';
+
+      availableTimes.forEach(function (time) {
+        const option = document.createElement("option");
+        option.value = time[0];
+        option.textContent = time[1];
+        timeSelect.appendChild(option);
+      });
+    }
+
+    if (dateInput && timeSelect) {
+      dateInput.addEventListener("change", loadAvailableTimes);
+    }
+
+    if (bookingForm) {
+      bookingForm.addEventListener("submit", async function (event) {
+        event.preventDefault();
+
+        const formMessage = document.getElementById("formMessage");
+        const formData = new FormData(bookingForm);
+
+        const bookingData = {
+          clientName: formData.get("clientName"),
+          clientEmail: formData.get("clientEmail"),
+          clientPhone: formData.get("clientPhone"),
+          serviceName: formData.get("serviceName"),
+          preferredDate: formData.get("preferredDate"),
+          preferredTime: formData.get("preferredTime"),
+          depositName: formData.get("depositName"),
+          allergies: formData.get("allergies"),
+          wearsGlasses: formData.get("wearsGlasses"),
+          wearsContacts: formData.get("wearsContacts"),
+          notes: formData.get("notes"),
+          consentAgreed: true,
+          signature: formData.get("signature")
+        };
+
+        try {
+          const response = await fetch(bookingWebhookUrl, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(bookingData)
+          });
+
+          if (response.ok) {
+            formMessage.textContent = "Your booking form has been submitted successfully 💕";
+            bookingForm.reset();
+
+            if (timeSelect) {
+              timeSelect.innerHTML = '<option value="">Select a date first</option>';
+            }
+          } else {
+            formMessage.textContent = "Something went wrong. Please try again or contact LashKStudio.";
+          }
+        } catch (error) {
+          formMessage.textContent = "There was an error submitting the form. Please try again.";
+        }
+      });
+    }
+  </script>
 </body>
 </html>

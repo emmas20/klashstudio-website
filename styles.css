@@ -156,20 +156,26 @@ h1 span {
 
 .hero-image-card {
   position: relative;
+  background: white;
+  padding: 12px;
+  border-radius: 40px;
+  box-shadow: 0 15px 35px rgba(232, 93, 148, 0.12);
 }
 
 .hero-image-card img {
   width: 100%;
-  max-height: 620px;
+  height: 620px;
   object-fit: cover;
-  border-radius: 40px;
+  object-position: center;
+  border-radius: 32px;
+  display: block;
 }
 
 .floating-card {
   position: absolute;
   bottom: 30px;
   right: 30px;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.9);
   padding: 20px 30px;
   border-radius: 20px;
   color: #e85d94;
@@ -340,32 +346,30 @@ h1 span {
 
 .booking-wrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.2fr;
   align-items: start;
   gap: 35px;
   max-width: 1100px;
   margin: 0 auto;
 }
+
 .booking-info,
 .booking-form {
+  background: white;
+  border: 1px solid #ffd3e4;
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: 0 10px 25px rgba(232, 93, 148, 0.08);
   align-self: start;
-  height: auto;
+  height: fit-content;
 }
-
 
 .booking-form {
   display: flex;
   flex-direction: column;
   gap: 14px;
-  max-width: 760px;
-  margin: 0 auto;
-  height: fit-content;
-  align-self: start;
-}
-
-.booking-info {
-  height: fit-content;
-  align-self: start;
+  width: 100%;
+  margin: 0;
 }
 
 .booking-info h3,
@@ -432,22 +436,6 @@ h1 span {
   text-align: center;
   font-weight: 700;
   color: #e85d94;
-}
-
-.cta {
-  background: linear-gradient(90deg, #e85d94, #f4a6c5);
-  color: white;
-  padding: 55px 8%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 35px;
-  flex-wrap: wrap;
-  text-align: center;
-}
-
-.cta h2 {
-  font-size: 44px;
 }
 
 .contact-card {
@@ -549,6 +537,10 @@ footer .logo {
     margin: 0 auto;
   }
 
+  .hero-image-card img {
+    height: 500px;
+  }
+
   .section-heading h2 {
     font-size: 42px;
   }
@@ -562,18 +554,4 @@ footer .logo {
     flex-direction: column;
     text-align: center;
   }
-
-  .cta h2 {
-    font-size: 34px;
-  }
-}
-
-.booking-info {
-  display: block;
-  height: fit-content !important;
-  min-height: 0 !important;
-}
-
-.booking-wrapper {
-  align-items: start !important;
 }
