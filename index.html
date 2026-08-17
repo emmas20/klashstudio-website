@@ -3,185 +3,222 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="LashKStudio — luxury lash extensions in Calgary." />
   <title>LashKStudio | Calgary Lash Artist</title>
-  <meta name="description" content="LashKStudio is a Calgary lash studio offering custom lash extensions in Calgary, Alberta." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Parisienne&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
-  <div class="top-bar">
-    <span>📍 Calgary, AB</span>
-    <span>3x Certified Lash Artist</span>
-    <span><a href="mailto:lashkstudio1@gmail.com">lashkstudio1@gmail.com</a></span>
-  </div>
+  <div class="announcement">Calgary Lash Artist · Custom Lash Sets · By Appointment Only</div>
 
   <header class="site-header">
-    <a class="logo" href="index.html#home">LashK<span>studio</span>♡</a>
+    <div class="container nav-wrap">
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">☰</button>
 
-    <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open navigation">☰</button>
+      <nav class="nav-left" id="navMenu" aria-label="Main navigation">
+        <a href="#services">Services</a>
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#faq">FAQ</a>
+      </nav>
 
-    <nav id="navMenu">
-      <a href="index.html#about" onclick="toggleMenu()">About</a>
-      <a href="index.html#services" onclick="toggleMenu()">Services</a>
-      <a href="index.html#policies" onclick="toggleMenu()">Policies</a>
-      <a href="index.html#gallery" onclick="toggleMenu()">Gallery</a>
-      <a href="index.html#contact" onclick="toggleMenu()">Contact</a>
-      <a class="nav-button" href="/booking.html">Book Now ✧</a>
-    </nav>
+      <a class="brand" href="#top" aria-label="LashKStudio home">
+        LashKStudio
+        <small>Calgary Lash Artist</small>
+      </a>
+
+      <div class="nav-right">
+        <a class="model-button" href="https://docs.google.com/forms/d/e/1FAIpQLSdq_LtjnpaMY2aVmQvTQLsHjSi1AeCd95UHtKdJkZ18gis5ZA/viewform" target="_blank" rel="noopener">Model Inquiry</a>
+        <a class="book-button" href="https://book.squareup.com/appointments/d22i9h6vk9ly7q/location/L72HHS5VJYE87/services" target="_blank" rel="noopener">Book Now</a>
+      </div>
+    </div>
   </header>
 
-  <main>
-    <section class="hero" id="home">
-      <div class="hero-text">
-        <p class="eyebrow">LashKStudio</p>
-        <h1>Enhancing your natural <span>beauty</span></h1>
-        <p class="hero-subtitle">Custom lash sets made to fit your features, lifestyle, and dream lash look.</p>
-
+  <main id="top">
+    <section class="hero">
+      <div class="hero-orb hero-orb-one" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb-two" aria-hidden="true"></div>
+      <div class="hero-content">
+        <p class="eyebrow">Elevated lash artistry</p>
+        <h1>Soft, refined lashes made to feel like you.</h1>
+        <p class="hero-subtitle">Custom lash extensions designed around your eye shape, natural lashes and preferred finish — from subtle definition to fuller texture.</p>
         <div class="hero-actions">
-          <a class="button primary" href="booking.html">Book Appointment</a>
-          <a class="button secondary" href="#services">View Services</a>
+          <a class="button primary" href="https://book.squareup.com/appointments/d22i9h6vk9ly7q/location/L72HHS5VJYE87/services" target="_blank" rel="noopener">Book Appointment</a>
+          <a class="button secondary" href="#work">View Recent Work</a>
         </div>
-
-        <div class="features">
-          <span>♡ 3x Certified</span>
-          <span>✧ Clean Studio</span>
-          <span>♡ Custom Sets</span>
+        <div class="hero-notes" aria-label="Studio highlights">
+          <span>Calgary, AB</span><span>♡</span><span>Custom Sets</span><span>♡</span><span>Square Booking</span>
         </div>
-      </div>
-
-      <div class="hero-image-card">
       </div>
     </section>
 
-    <section class="section about" id="about">
-      <div class="section-heading">
-        <p class="eyebrow">About Me</p>
-        <h2>Hi, I’m Kira ♡</h2>
-      </div>
-
-      <div class="about-grid">
-        <img src="assets/kira-new-profile.jpeg" alt="Kira LashKStudio owner" />
-        <div>
-          <p>I’m a 3x certified lash artist based in Calgary, Alberta. My goal is to help every client feel confident and beautiful through customized lash extensions that enhance their natural features.</p>
-          <p>Whether you want a soft everyday set or a fuller glam look, I create lashes that match your style while keeping your natural lashes in mind.</p>
-        </div>
+    <section class="pink-strip" aria-label="Available styles">
+      <div class="pink-strip-inner">
+        <span>Classic</span><span>✦</span><span>Hybrid</span><span>✦</span><span>Volume</span><span>✦</span><span>Wispy</span><span>✦</span><span>Anime</span>
       </div>
     </section>
 
     <section class="section services" id="services">
-      <div class="section-heading">
-        <p class="eyebrow">Menu</p>
-        <h2>Lash Services</h2>
-      </div>
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">The service menu</p>
+          <h2>Find your finish.</h2>
+          <p>Choose the look you want, then view current services, pricing and live availability directly through Square.</p>
+        </div>
 
-      <div class="service-group">
-        <h3>Full Sets</h3>
-        <div class="cards">
-          <article class="service-card"><h4>Classic Set</h4><p>1 hr 50 min</p><strong>$60</strong></article>
-          <article class="service-card"><h4>Hybrid Set</h4><p>2 hr 45 min</p><strong>$80</strong></article>
-          <article class="service-card"><h4>Volume Set</h4><p>3 hr 20 min</p><strong>$90</strong></article>
-          <article class="service-card"><h4>Mega Volume Set</h4><p>3 hr 40 min</p><strong>$100</strong></article>
-          <article class="service-card"><h4>Wispy Set</h4><p>2 hr 30 min</p><strong>$80</strong></article>
-          <article class="service-card"><h4>Anime Set</h4><p>2 hr 30 min</p><strong>$80</strong></article>
-          <article class="service-card"><h4>Wet Set</h4><p>2 hr 30 min</p><strong>$80</strong></article>
+        <div class="service-cards">
+          <article class="service-card">
+            <span class="service-number">01</span>
+            <h3>Classic</h3>
+            <p>Clean, natural definition for an effortless everyday look.</p>
+          </article>
+          <article class="service-card featured">
+            <span class="service-number">02</span>
+            <h3>Hybrid</h3>
+            <p>A soft mix of definition and texture with a customizable finish.</p>
+          </article>
+          <article class="service-card">
+            <span class="service-number">03</span>
+            <h3>Volume</h3>
+            <p>Fuller, lightweight dimension while keeping the set soft and refined.</p>
+          </article>
+        </div>
+
+        <div class="center-action">
+          <a class="button primary" href="https://book.squareup.com/appointments/d22i9h6vk9ly7q/location/L72HHS5VJYE87/services" target="_blank" rel="noopener">See All Services on Square</a>
         </div>
       </div>
+    </section>
 
-      <div class="service-group two-columns">
+    <section class="section work" id="work">
+      <div class="container">
+        <div class="work-heading">
+          <div>
+            <p class="eyebrow">Recent work</p>
+            <h2>The LashKStudio edit.</h2>
+          </div>
+          <p class="work-intro">A closer look at recent sets created by Kira. Each appointment is customized to the client rather than copied from a preset look.</p>
+        </div>
+
+        <div class="editorial-gallery">
+          <figure class="work-item work-tall">
+            <img src="assets/lash-2.jpeg" alt="Custom lash set by LashKStudio" loading="lazy" />
+          </figure>
+          <figure class="work-item work-wide">
+            <img src="assets/lash-4.jpeg" alt="Custom lash set by LashKStudio" loading="lazy" />
+          </figure>
+          <figure class="work-item">
+            <img src="assets/lash-3.jpeg" alt="Volume lash set by LashKStudio" loading="lazy" />
+          </figure>
+          <figure class="work-item">
+            <img src="assets/lash-5.jpeg" alt="Custom lash set by LashKStudio" loading="lazy" />
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about" id="about">
+      <div class="container about-grid">
+        <div class="about-image-wrap">
+          <img src="assets/kira-new-profile.jpeg" alt="Kira, owner and lash artist at LashKStudio" loading="lazy" />
+          <div class="about-badge">Lash artist<br>Calgary, AB</div>
+        </div>
+
+        <div class="about-copy">
+          <p class="eyebrow">Meet your artist</p>
+          <h2>Beauty with intention.</h2>
+          <p>LashKStudio is focused on creating sets that complement your natural features instead of giving every client the same look.</p>
+          <p>From mapping to styling, each appointment is approached with softness, balance and attention to detail so your lashes feel personal to you.</p>
+          <p class="signature">Kira</p>
+          <a class="button primary" href="https://book.squareup.com/appointments/d22i9h6vk9ly7q/location/L72HHS5VJYE87/services" target="_blank" rel="noopener">Reserve Your Appointment</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="model-section">
+      <div class="container model-card">
+        <div class="model-copy">
+          <p class="eyebrow">Model opportunities</p>
+          <h2>Want to model for LashKStudio?</h2>
+          <p>Use the model inquiry form for content, technique and promotional model opportunities. Requirements and availability may vary.</p>
+        </div>
+        <a class="button primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdq_LtjnpaMY2aVmQvTQLsHjSi1AeCd95UHtKdJkZ18gis5ZA/viewform" target="_blank" rel="noopener">Submit Model Inquiry</a>
+      </div>
+    </section>
+
+    <section class="booking-banner">
+      <div class="container booking-banner-inner">
         <div>
-          <h3>2 Week Infills</h3>
-          <ul class="price-list">
-            <li><span>Classic</span><strong>$45</strong></li>
-            <li><span>Hybrid</span><strong>$60</strong></li>
-            <li><span>Volume</span><strong>$70</strong></li>
-            <li><span>Mega Volume</span><strong>$80</strong></li>
-            <li><span>Wispy</span><strong>$70</strong></li>
-            <li><span>Anime</span><strong>$70</strong></li>
-          </ul>
+          <p class="eyebrow">Ready when you are</p>
+          <h2>Book directly through Square.</h2>
+          <p>See Kira's live availability, select your service and complete your appointment in one place.</p>
         </div>
+        <a class="button dark" href="https://book.squareup.com/appointments/d22i9h6vk9ly7q/location/L72HHS5VJYE87/services" target="_blank" rel="noopener">View Availability</a>
+      </div>
+    </section>
 
-        <div>
-          <h3>3 Week Infills</h3>
-          <ul class="price-list">
-            <li><span>Classic</span><strong>$45</strong></li>
-            <li><span>Hybrid</span><strong>$70</strong></li>
-            <li><span>Volume</span><strong>$70</strong></li>
-            <li><span>Mega Volume</span><strong>$80</strong></li>
-            <li><span>Wispy</span><strong>$70</strong></li>
-            <li><span>Anime</span><strong>$70</strong></li>
-          </ul>
+    <section class="section faq" id="faq">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Before your appointment</p>
+          <h2>Frequently asked.</h2>
         </div>
-      </div>
-    </section>
-
-    <section class="section policies" id="policies">
-      <div class="section-heading">
-        <p class="eyebrow">Please Read</p>
-        <h2>Studio Policies</h2>
-      </div>
-
-      <div class="policy-grid">
-        <article><h3>Deposit</h3><p>A $15 non-refundable deposit goes toward your service and is required to book all appointments.</p></article>
-        <article><h3>Late Arrival</h3><p>Please arrive on time. There is a 10 minute grace period. Arriving late may reduce appointment time.</p></article>
-        <article><h3>Refunds</h3><p>Strictly no refunds. Complimentary touch ups are offered for any issues within 72 hours.</p></article>
-        <article><h3>Guests</h3><p>You are allowed to bring 1 guest. Extra seating space is limited in the home studio.</p></article>
-        <article><h3>No Foreign Fills</h3><p>Please book a removal and full set if you have lashes done by another lash tech.</p></article>
-        <article><h3>Makeup</h3><p>Please do not wear eye makeup before your appointment.</p></article>
-        <article><h3>Infill Note</h3><p>If you have less than 40% of your lashes remaining, it will be considered a full set.</p></article>
-        <article><h3>Other Notes</h3><p>Address is sent after booking. Please arrive 5 minutes early for your first appointment.</p></article>
-      </div>
-    </section>
-
-    <section class="section gallery" id="gallery">
-      <div class="section-heading">
-        <p class="eyebrow">Gallery</p>
-        <h2>Lash Inspo ♡</h2>
-      </div>
-
-      <p class="gallery-note">A look at some of Kira’s lash sets — soft, full, wispy, and customized to each client.</p>
-
-      <div class="gallery-grid lash-gallery">
-        <img src="assets/lash-2.jpeg" alt="Volume lash set by LashKStudio" />
-        <img src="assets/lash-3.jpeg" alt="Close up lash set by LashKStudio" />
-        <img src="assets/lash-4.jpeg" alt="Wispy lash set by LashKStudio" />
-        <img src="assets/lash-5.jpeg" alt="Natural lash set by LashKStudio" />
-      </div>
-
-      <div class="center">
-        <a class="button secondary" href="https://www.instagram.com/lashkstudio" target="_blank" rel="noopener">View Instagram</a>
-      </div>
-    </section>
-
-    <section class="section contact" id="contact">
-      <div class="section-heading">
-        <p class="eyebrow">Contact</p>
-        <h2>Get in Touch</h2>
-      </div>
-
-      <div class="contact-card">
-        <p><strong>Instagram:</strong> <a href="https://www.instagram.com/lashkstudio" target="_blank" rel="noopener">@lashkstudio</a></p>
-        <p><strong>Email:</strong> <a href="mailto:lashkstudio1@gmail.com">lashkstudio1@gmail.com</a></p>
-        <p><strong>Phone:</strong> <a href="tel:5878342940">587-834-2940</a></p>
+        <div class="faq-list">
+          <details>
+            <summary>How should I prepare for my appointment?</summary>
+            <p>Please arrive with clean lashes and no mascara, eyeliner, strip-lash glue or oil-based products around the eye area.</p>
+          </details>
+          <details>
+            <summary>How long will my appointment take?</summary>
+            <p>Appointment length depends on the service selected. Square shows the estimated duration before you confirm your booking.</p>
+          </details>
+          <details>
+            <summary>How often should I book a fill?</summary>
+            <p>Most clients return every two to three weeks depending on natural lash growth, aftercare and desired fullness.</p>
+          </details>
+          <details>
+            <summary>Where can I view booking policies?</summary>
+            <p>Please review the policies shown during your Square booking process before confirming your appointment.</p>
+          </details>
+        </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <a class="logo" href="index.html#home">LashK<span>studio</span>♡</a>
-    <p>Calgary, AB • 3x Certified Lash Artist</p>
-    <p>© 2026 LashKStudio. All rights reserved.</p>
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-brand">LashKStudio</div>
+        <p>Custom lash extensions in Calgary with a soft, refined approach.</p>
+      </div>
+      <div>
+        <p class="footer-title">Explore</p>
+        <a href="#services">Services</a>
+        <a href="#work">Recent Work</a>
+        <a href="#about">About Kira</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div>
+        <p class="footer-title">Book + Model</p>
+        <a href="https://book.squareup.com/appointments/d22i9h6vk9ly7q/location/L72HHS5VJYE87/services" target="_blank" rel="noopener">Book on Square</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdq_LtjnpaMY2aVmQvTQLsHjSi1AeCd95UHtKdJkZ18gis5ZA/viewform" target="_blank" rel="noopener">Model Inquiry</a>
+        <a href="mailto:lashkstudio1@gmail.com">lashkstudio1@gmail.com</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 LashKStudio</span>
+      <span>Calgary, Alberta</span>
+    </div>
+    <div class="website-credit">
+  <span>Website designed & developed by</span>
+  <a href="https://www.clienflowsystemss.com/" target="_blank" rel="noopener">
+    ClientFlowSystems
+  </a>
+</div>
   </footer>
 
-  <script>
-    function toggleMenu() {
-      const navMenu = document.getElementById("navMenu");
-      if (navMenu) {
-        navMenu.classList.toggle("active");
-      }
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
