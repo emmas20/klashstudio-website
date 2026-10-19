@@ -3,222 +3,1984 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="LashKStudio — luxury lash extensions in Calgary." />
-  <title>LashKStudio | Calgary Lash Artist</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+  <title>NailsByXia — Luxury Nail Studio · Calgary, AB</title>
+  <meta name="description" content="Calgary's premier luxury nail studio. Custom gel sets, acrylics, nail art, and spa pedicures. Book with Xia today." />
+  <meta property="og:title" content="NailsByXia — Luxury Nail Studio" />
+  <meta property="og:description" content="Custom nail art & luxury nail services in Calgary, AB." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --pink-50:  #fff0f5;
+      --pink-100: #ffd6e7;
+      --pink-200: #ffb3ce;
+      --pink-300: #ff85b3;
+      --pink-400: #f7578f;
+      --pink-500: #e83d75;
+      --pink-600: #c2255c;
+      --rose:     #f9c6d8;
+      --rose-deep:#e8a0bc;
+      --mauve:    #c97da8;
+      --mauve-deep:#9a4d78;
+      --gold:     #d4a96a;
+      --gold-light:#f2dfc0;
+      --gold-deep:#a87440;
+      --cream:    #fff8fb;
+      --white:    #ffffff;
+      --dark:     #1e0d16;
+      --dark-mid: #3d1a2c;
+      --text-body:#5a2d45;
+      --text-soft:#9b6880;
+      --shadow-pink: 0 8px 40px rgba(232,61,117,0.14);
+      --shadow-sm:   0 2px 12px rgba(180,60,100,0.10);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      font-weight: 300;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* ─── CUSTOM CURSOR ─── */
+    .cursor {
+      position: fixed;
+      width: 12px; height: 12px;
+      background: var(--pink-400);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s, width 0.2s, height 0.2s, background 0.2s;
+      mix-blend-mode: multiply;
+    }
+    .cursor-ring {
+      position: fixed;
+      width: 36px; height: 36px;
+      border: 1.5px solid var(--pink-300);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: transform 0.18s ease, width 0.25s, height 0.25s;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.4rem 4rem;
+      background: rgba(255,248,251,0.82);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--pink-100);
+      transition: padding 0.3s;
+    }
+    nav.scrolled { padding: 1rem 4rem; }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.55rem;
+      font-weight: 500;
+      color: var(--dark);
+      letter-spacing: 0.02em;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--pink-500); font-style: italic; }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-body);
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 400;
+      position: relative;
+      transition: color 0.2s;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 1.5px;
+      background: var(--pink-400);
+      transition: width 0.25s;
+    }
+    .nav-links a:hover { color: var(--pink-500); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      background: var(--pink-500) !important;
+      color: #fff !important;
+      padding: 0.62rem 1.6rem !important;
+      border-radius: 100px !important;
+      letter-spacing: 0.08em !important;
+      font-weight: 500 !important;
+      box-shadow: 0 4px 18px rgba(232,61,117,0.35) !important;
+      transition: background 0.2s, box-shadow 0.2s, transform 0.15s !important;
+    }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover {
+      background: var(--pink-600) !important;
+      box-shadow: 0 6px 24px rgba(194,37,92,0.45) !important;
+      transform: translateY(-1px);
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 64px;
+      overflow: hidden;
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 2.5rem 2.5rem 2.5rem 4rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--pink-50);
+      border: 1px solid var(--pink-200);
+      border-radius: 100px;
+      padding: 0.4rem 1.1rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--pink-600);
+      margin-bottom: 1rem;
+      width: fit-content;
+      animation: fadeUp 0.7s ease both;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--pink-400);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.4); }
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.6rem, 4.5vw, 4.2rem);
+      font-weight: 500;
+      line-height: 1.08;
+      color: var(--dark);
+      margin-bottom: 1rem;
+      animation: fadeUp 0.7s 0.1s ease both;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--pink-500);
+      display: block;
+    }
+    .hero-title .outline-text {
+      -webkit-text-stroke: 1.5px var(--pink-300);
+      color: transparent;
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--text-body);
+      line-height: 1.85;
+      max-width: 420px;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.7s 0.2s ease both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+      animation: fadeUp 0.7s 0.3s ease both;
+    }
+
+    .btn-pink {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--pink-500);
+      color: #fff;
+      border: none;
+      padding: 1rem 2.2rem;
+      border-radius: 100px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      box-shadow: 0 6px 24px rgba(232,61,117,0.38);
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .btn-pink:hover {
+      background: var(--pink-600);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 32px rgba(194,37,92,0.45);
+    }
+    .btn-pink svg { width: 16px; height: 16px; }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--text-body);
+      border: 1.5px solid var(--rose-deep);
+      padding: 1rem 2rem;
+      border-radius: 100px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 400;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+    .btn-ghost:hover {
+      border-color: var(--pink-400);
+      color: var(--pink-500);
+      transform: translateY(-1px);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 3.5rem;
+      animation: fadeUp 0.7s 0.4s ease both;
+    }
+    .hero-stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 500;
+      color: var(--pink-500);
+      display: block;
+    }
+    .hero-stat-label {
+      font-size: 0.78rem;
+      color: var(--text-soft);
+      letter-spacing: 0.08em;
+    }
+
+    .hero-right {
+      position: relative;
+      background: linear-gradient(135deg, #ffe0ef 0%, #ffd6e7 40%, #f9c6d8 100%);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* decorative blobs */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.55;
+      filter: blur(60px);
+    }
+    .blob-1 { width: 320px; height: 320px; background: #ffb3ce; top: -60px; right: -60px; }
+    .blob-2 { width: 220px; height: 220px; background: #e8d5b0; bottom: 40px; left: -30px; }
+    .blob-3 { width: 180px; height: 180px; background: #f7a8c8; top: 40%; right: 15%; }
+
+    /* floating nail cards */
+    .nails-visual {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      padding: 4rem 3rem;
+    }
+
+    .nail-row { display: flex; gap: 12px; align-items: flex-end; }
+    .nail-row:nth-child(2) { align-items: center; }
+    .nail-row:nth-child(3) { align-items: flex-start; }
+
+    .nail {
+      border-radius: 50% 50% 46% 46% / 60% 60% 40% 40%;
+      box-shadow: 0 8px 24px rgba(180,60,100,0.18), inset 0 -4px 8px rgba(0,0,0,0.06);
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .nail::before {
+      content: '';
+      position: absolute;
+      top: 10%; left: 15%;
+      width: 45%; height: 30%;
+      background: rgba(255,255,255,0.45);
+      border-radius: 50%;
+      filter: blur(4px);
+    }
+
+    .n1  { width: 54px; height: 68px; background: linear-gradient(160deg, #ffb3ce, #f7578f); }
+    .n2  { width: 58px; height: 74px; background: linear-gradient(160deg, #ffd6e7, #e83d75); }
+    .n3  { width: 64px; height: 80px; background: linear-gradient(160deg, #ff85b3, #c2255c); }
+    .n4  { width: 58px; height: 74px; background: linear-gradient(160deg, #ffd6e7, #e83d75); }
+    .n5  { width: 54px; height: 68px; background: linear-gradient(160deg, #f9c6d8, #f7578f); }
+    .n6  { width: 52px; height: 66px; background: linear-gradient(160deg, #f2dfc0, #d4a96a); }
+    .n7  { width: 58px; height: 72px; background: linear-gradient(160deg, #c7f0e0, #4eba92); }
+    .n8  { width: 64px; height: 80px; background: linear-gradient(160deg, #ddd0e8, #9a4d78); }
+    .n9  { width: 58px; height: 72px; background: linear-gradient(160deg, #ffc8e0, #e83d75); }
+    .n10 { width: 52px; height: 66px; background: linear-gradient(160deg, #ffe0b0, #d4a96a); }
+
+    /* nail art details on some */
+    .nail.art-floral::after {
+      content: '✿';
+      position: absolute;
+      bottom: 10px; left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.85);
+      text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+    .nail.art-gem::after {
+      content: '◆';
+      position: absolute;
+      bottom: 12px; left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.9);
+    }
+    .nail.art-star::after {
+      content: '★';
+      position: absolute;
+      bottom: 10px; left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.9rem;
+      color: rgba(255,215,80,0.9);
+    }
+
+    .nail.float-1 { animation: floatA 4s ease-in-out infinite; }
+    .nail.float-2 { animation: floatB 5s ease-in-out infinite 0.5s; }
+    .nail.float-3 { animation: floatA 4.5s ease-in-out infinite 1s; }
+
+    @keyframes floatA {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    @keyframes floatB {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    /* floating tag */
+    .floating-tag {
+      position: absolute;
+      background: white;
+      border-radius: 14px;
+      padding: 0.7rem 1.1rem;
+      box-shadow: 0 6px 28px rgba(180,60,100,0.16);
+      font-size: 0.78rem;
+      color: var(--text-body);
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 3;
+      animation: floatB 5s ease-in-out infinite;
+    }
+    .tag-dot {
+      width: 8px; height: 8px;
+      background: var(--pink-400);
+      border-radius: 50%;
+    }
+    .ft-1 { top: 18%; left: 6%; animation-delay: 0s; }
+    .ft-2 { bottom: 22%; right: 4%; animation-delay: 1.2s; }
+    .ft-3 { top: 60%; left: 4%; animation-delay: 0.6s; }
+
+    /* ─── MARQUEE ─── */
+    .marquee-wrap {
+      background: var(--pink-500);
+      overflow: hidden;
+      padding: 0.9rem 0;
+      white-space: nowrap;
+    }
+    .marquee-track {
+      display: inline-flex;
+      animation: marquee 22s linear infinite;
+    }
+    .marquee-item {
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+      padding: 0 2.5rem;
+      font-weight: 400;
+    }
+    .marquee-dot {
+      color: rgba(255,255,255,0.45);
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ─── SECTION SHARED ─── */
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--pink-500);
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .section-label::before {
+      content: '';
+      width: 28px; height: 1px;
+      background: var(--pink-400);
+    }
+
+    .section-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 500;
+      line-height: 1.15;
+      color: var(--dark);
+    }
+    .section-heading em {
+      font-style: italic;
+      color: var(--pink-500);
+    }
+
+    /* ─── SERVICES ─── */
+    #services {
+      padding: 8rem 4rem;
+      background: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .services-bg-circle {
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, var(--pink-50) 0%, transparent 70%);
+      border-radius: 50%;
+      top: -200px; right: -200px;
+      pointer-events: none;
+    }
+
+    .services-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: end;
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .services-intro {
+      font-size: 0.95rem;
+      color: var(--text-body);
+      line-height: 1.85;
+      max-width: 380px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: var(--cream);
+      border: 1px solid var(--pink-100);
+      border-radius: 20px;
+      padding: 2.2rem 1.8rem 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+      cursor: default;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--pink-50) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-pink);
+      border-color: var(--pink-200);
+    }
+    .service-card:hover::before { opacity: 1; }
+
+    .service-card.featured {
+      background: linear-gradient(145deg, var(--pink-500), var(--pink-600));
+      border-color: var(--pink-500);
+      color: white;
+    }
+    .service-card.featured::before { display: none; }
+    .service-card.featured .service-name { color: white; }
+    .service-card.featured .service-desc { color: rgba(255,255,255,0.8); }
+    .service-card.featured .price-amount { color: var(--gold-light); }
+    .service-card.featured .price-label { color: rgba(255,255,255,0.6); }
+    .service-card.featured .service-tag {
+      background: rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.9);
+    }
+
+    .service-icon-wrap {
+      width: 50px; height: 50px;
+      background: var(--pink-100);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1.4rem;
+    }
+    .featured .service-icon-wrap {
+      background: rgba(255,255,255,0.2);
+    }
+
+    .service-tag {
+      display: inline-block;
+      background: var(--pink-100);
+      color: var(--pink-600);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 100px;
+      margin-bottom: 0.8rem;
+      font-weight: 500;
+    }
+
+    .service-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 500;
+      color: var(--dark);
+      margin-bottom: 0.6rem;
+    }
+
+    .service-desc {
+      font-size: 0.85rem;
+      color: var(--text-body);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-includes {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+    .service-includes li {
+      font-size: 0.8rem;
+      color: var(--text-soft);
+      padding: 3px 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .featured .service-includes li { color: rgba(255,255,255,0.7); }
+    .service-includes li::before {
+      content: '✓';
+      color: var(--pink-400);
+      font-weight: 500;
+      font-size: 0.75rem;
+    }
+    .featured .service-includes li::before { color: var(--gold-light); }
+
+    .service-price {
+      display: flex;
+      align-items: baseline;
+      gap: 5px;
+      margin-top: auto;
+    }
+    .price-label {
+      font-size: 0.72rem;
+      color: var(--text-soft);
+      letter-spacing: 0.08em;
+    }
+    .price-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: var(--pink-500);
+    }
+
+    /* ─── PRICING ─── */
+    #pricing {
+      padding: 8rem 4rem;
+      background: var(--cream);
+    }
+
+    .pricing-layout {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 5rem;
+      align-items: start;
+      margin-top: 4rem;
+    }
+
+    .pricing-sidebar {
+      position: sticky;
+      top: 100px;
+    }
+
+    .pricing-note {
+      background: var(--pink-50);
+      border: 1px solid var(--pink-100);
+      border-radius: 18px;
+      padding: 1.8rem;
+      margin-top: 2rem;
+    }
+    .pricing-note h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--dark);
+      margin-bottom: 0.6rem;
+    }
+    .pricing-note p {
+      font-size: 0.82rem;
+      color: var(--text-body);
+      line-height: 1.75;
+    }
+
+    .policy-list {
+      list-style: none;
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+    .policy-list li {
+      font-size: 0.82rem;
+      color: var(--text-body);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.5;
+    }
+    .policy-list li::before {
+      content: '♡';
+      color: var(--pink-400);
+      font-size: 0.9rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .pricing-table {
+      background: white;
+      border-radius: 20px;
+      border: 1px solid var(--pink-100);
+      overflow: hidden;
+    }
+
+    .pricing-category {
+      background: var(--pink-50);
+      padding: 0.9rem 2rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--pink-600);
+      font-weight: 500;
+      border-bottom: 1px solid var(--pink-100);
+    }
+
+    .pricing-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      padding: 1.1rem 2rem;
+      border-bottom: 1px solid #fdf0f5;
+      gap: 1rem;
+      transition: background 0.15s;
+    }
+    .pricing-row:last-child { border-bottom: none; }
+    .pricing-row:hover { background: var(--pink-50); }
+
+    .pr-name {
+      font-size: 0.92rem;
+      color: var(--dark);
+      font-weight: 400;
+    }
+    .pr-detail {
+      font-size: 0.78rem;
+      color: var(--text-soft);
+      margin-top: 2px;
+    }
+    .pr-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--pink-500);
+      white-space: nowrap;
+    }
+
+    /* ─── ABOUT ─── */
+    #about {
+      padding: 8rem 4rem;
+      background: white;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .about-photo-wrap {
+      position: relative;
+    }
+
+    .about-photo-bg {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: linear-gradient(145deg, var(--pink-100), var(--rose));
+      border-radius: 30px 30px 80px 30px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .about-monogram {
+      font-family: 'Playfair Display', serif;
+      font-size: 10rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.55);
+      font-style: italic;
+      user-select: none;
+      line-height: 1;
+    }
+
+    .about-photo-badge {
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      background: var(--pink-500);
+      color: white;
+      border-radius: 18px;
+      padding: 1.2rem 1.6rem;
+      font-size: 0.78rem;
+      line-height: 1.5;
+      box-shadow: 0 8px 28px rgba(232,61,117,0.3);
+    }
+    .about-photo-badge strong {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+
+    .about-photo-tag {
+      position: absolute;
+      top: -18px;
+      left: 24px;
+      background: white;
+      border: 1px solid var(--pink-100);
+      border-radius: 12px;
+      padding: 0.6rem 1rem;
+      font-size: 0.78rem;
+      color: var(--text-body);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .about-text { }
+
+    .about-body {
+      font-size: 0.95rem;
+      color: var(--text-body);
+      line-height: 1.9;
+      margin: 1.5rem 0 2rem;
+    }
+
+    .about-values {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    .value-item {
+      background: var(--pink-50);
+      border: 1px solid var(--pink-100);
+      border-radius: 14px;
+      padding: 1.2rem;
+    }
+    .value-icon { font-size: 1.3rem; margin-bottom: 0.5rem; }
+    .value-title {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--dark);
+      margin-bottom: 3px;
+    }
+    .value-text {
+      font-size: 0.78rem;
+      color: var(--text-soft);
+      line-height: 1.55;
+    }
+
+    .certs {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+    .cert-badge {
+      background: white;
+      border: 1px solid var(--pink-100);
+      border-radius: 10px;
+      padding: 0.5rem 1rem;
+      font-size: 0.75rem;
+      color: var(--text-body);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .cert-badge::before { content: '✓'; color: var(--pink-400); }
+
+    /* ─── TESTIMONIALS ─── */
+    #testimonials {
+      padding: 8rem 4rem;
+      background: linear-gradient(160deg, #fff0f5 0%, #fff8fb 60%, #fff0f5 100%);
+    }
+
+    .testimonials-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .testimonials-header .section-label {
+      justify-content: center;
+    }
+    .testimonials-header .section-label::before { display: none; }
+    .testimonials-header .section-label::after {
+      content: '';
+      width: 28px; height: 1px;
+      background: var(--pink-400);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .testimonial-card {
+      background: white;
+      border: 1px solid var(--pink-100);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-pink);
+    }
+
+    .t-stars {
+      color: var(--gold);
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+      margin-bottom: 1rem;
+    }
+    .t-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--dark);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+    .t-author {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-top: 1px solid var(--pink-50);
+      padding-top: 1rem;
+    }
+    .t-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--pink-600);
+      background: var(--pink-100);
+      flex-shrink: 0;
+    }
+    .t-name {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--dark);
+    }
+    .t-sub {
+      font-size: 0.75rem;
+      color: var(--text-soft);
+    }
+
+    /* ─── FAQ ─── */
+    #faq {
+      padding: 8rem 4rem;
+      background: white;
+    }
+
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 6rem;
+      align-items: start;
+      margin-top: 4rem;
+    }
+
+    .faq-aside {
+      position: sticky;
+      top: 100px;
+    }
+    .faq-aside-text {
+      font-size: 0.9rem;
+      color: var(--text-body);
+      line-height: 1.85;
+      margin: 1.5rem 0 2rem;
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--pink-100);
+    }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      text-align: left;
+      padding: 1.3rem 0;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      color: var(--dark);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      font-weight: 400;
+      transition: color 0.2s;
+    }
+    .faq-question:hover { color: var(--pink-500); }
+    .faq-question.active { color: var(--pink-500); }
+    .faq-icon {
+      width: 24px; height: 24px;
+      border: 1.5px solid currentColor;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+      transition: transform 0.3s;
+      line-height: 1;
+    }
+    .faq-question.active .faq-icon { transform: rotate(45deg); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.2s;
+    }
+    .faq-answer.open {
+      max-height: 300px;
+      padding-bottom: 1.2rem;
+    }
+    .faq-answer p {
+      font-size: 0.88rem;
+      color: var(--text-body);
+      line-height: 1.8;
+    }
+
+    /* ─── BOOKING / CONTACT ─── */
+    #booking {
+      padding: 8rem 4rem;
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .booking-bg-blob {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.12;
+      filter: blur(100px);
+      pointer-events: none;
+    }
+    .bb-1 { width: 500px; height: 500px; background: var(--pink-400); top: -100px; right: -100px; }
+    .bb-2 { width: 300px; height: 300px; background: var(--gold); bottom: -50px; left: -50px; }
+
+    .booking-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .booking-left .section-label { color: var(--pink-300); }
+    .booking-left .section-label::before { background: var(--pink-300); }
+    .booking-left .section-heading { color: white; }
+
+    .booking-desc {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.85;
+      margin: 1.5rem 0 2.5rem;
+      max-width: 380px;
+    }
+
+    .booking-contact-items {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .bc-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .bc-icon {
+      width: 44px; height: 44px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .bc-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--pink-300);
+      margin-bottom: 2px;
+    }
+    .bc-value {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.8);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 0.8rem;
+      margin-top: 2.5rem;
+    }
+    .social-btn {
+      width: 44px; height: 44px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .social-btn:hover {
+      background: var(--pink-500);
+      border-color: var(--pink-500);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .booking-form-wrap {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 24px;
+      padding: 2.5rem;
+    }
+
+    .form-heading {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: white;
+      margin-bottom: 1.8rem;
+    }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group label {
+      display: block;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 0.5rem;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 0.85rem 1.1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      color: white;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: rgba(255,255,255,0.3); }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--pink-400);
+    }
+    .form-group select option { background: #2a1520; color: white; }
+    .form-group textarea { resize: none; height: 90px; }
+
+    .form-submit {
+      width: 100%;
+      background: var(--pink-500);
+      color: white;
+      border: none;
+      border-radius: 100px;
+      padding: 1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 0.5rem;
+      box-shadow: 0 4px 20px rgba(232,61,117,0.35);
+    }
+    .form-submit:hover {
+      background: var(--pink-600);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 28px rgba(194,37,92,0.45);
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #160a11;
+      padding: 2rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+    }
+    .footer-logo span { color: var(--pink-400); font-style: italic; }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 0.06em;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+    .footer-links a {
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--pink-300); }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      #hero { grid-template-columns: 1fr; }
+      .hero-right { min-height: 400px; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .pricing-layout { grid-template-columns: 1fr; }
+      .pricing-sidebar { position: static; }
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .testimonials-grid { grid-template-columns: 1fr 1fr; }
+      .faq-layout { grid-template-columns: 1fr; }
+      .faq-aside { position: static; }
+      .booking-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      #hero, #services, #pricing, #about, #testimonials, #faq, #booking { padding: 5rem 1.5rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.5rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: 2.8rem; }
+    }
+  </style>
 </head>
 <body>
-  <div class="announcement">Calgary Lash Artist · Custom Lash Sets · By Appointment Only</div>
 
-  <header class="site-header">
-    <div class="container nav-wrap">
-      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">☰</button>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
 
-      <nav class="nav-left" id="navMenu" aria-label="Main navigation">
-        <a href="#services">Services</a>
-        <a href="#work">Work</a>
-        <a href="#about">About</a>
-        <a href="#faq">FAQ</a>
-      </nav>
+  <!-- NAV -->
+  <nav id="navbar">
+    <a class="nav-logo" href="#">Nails<span>By</span>Xia</a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#booking" class="nav-cta">Book Now</a></li>
+    </ul>
+  </nav>
 
-      <a class="brand" href="#top" aria-label="LashKStudio home">
-        LashKStudio
-        <small>Calgary Lash Artist</small>
-      </a>
-
-      <div class="nav-right">
-        <a class="model-button" href="https://docs.google.com/forms/d/e/1FAIpQLSdq_LtjnpaMY2aVmQvTQLsHjSi1AeCd95UHtKdJkZ18gis5ZA/viewform" target="_blank" rel="noopener">Model Inquiry</a>
-        <a class="book-button" href="https://book.squareup.com/appointments/d22i9h6vk9ly7q/location/L72HHS5VJYE87/services" target="_blank" rel="noopener">Book Now</a>
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-left">
+      <div class="hero-badge">Now Booking · Calgary, AB</div>
+      <h1 class="hero-title">
+        Every nail<br>
+        tells a <em>story</em><br>
+        <span class="outline-text">make it yours</span>
+      </h1>
+      <p class="hero-desc">
+        Precision nail artistry, premium products, and a deeply personalized experience — because you deserve nails as unique as you are.
+      </p>
+      <div class="hero-actions">
+        <a href="#booking" class="btn-pink">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          Book an Appointment
+        </a>
+        <a href="#services" class="btn-ghost">View Services</a>
       </div>
-    </div>
-  </header>
-
-  <main id="top">
-    <section class="hero">
-      <div class="hero-orb hero-orb-one" aria-hidden="true"></div>
-      <div class="hero-orb hero-orb-two" aria-hidden="true"></div>
-      <div class="hero-content">
-        <p class="eyebrow">Elevated lash artistry</p>
-        <h1>Soft, refined lashes made to feel like you.</h1>
-        <p class="hero-subtitle">Custom lash extensions designed around your eye shape, natural lashes and preferred finish — from subtle definition to fuller texture.</p>
-        <div class="hero-actions">
-          <a class="button primary" href="https://book.squareup.com/appointments/d22i9h6vk9ly7q/location/L72HHS5VJYE87/services" target="_blank" rel="noopener">Book Appointment</a>
-          <a class="button secondary" href="#work">View Recent Work</a>
-        </div>
-        <div class="hero-notes" aria-label="Studio highlights">
-          <span>Calgary, AB</span><span>♡</span><span>Custom Sets</span><span>♡</span><span>Square Booking</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="pink-strip" aria-label="Available styles">
-      <div class="pink-strip-inner">
-        <span>Classic</span><span>✦</span><span>Hybrid</span><span>✦</span><span>Volume</span><span>✦</span><span>Wispy</span><span>✦</span><span>Anime</span>
-      </div>
-    </section>
-
-    <section class="section services" id="services">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">The service menu</p>
-          <h2>Find your finish.</h2>
-          <p>Choose the look you want, then view current services, pricing and live availability directly through Square.</p>
-        </div>
-
-        <div class="service-cards">
-          <article class="service-card">
-            <span class="service-number">01</span>
-            <h3>Classic</h3>
-            <p>Clean, natural definition for an effortless everyday look.</p>
-          </article>
-          <article class="service-card featured">
-            <span class="service-number">02</span>
-            <h3>Hybrid</h3>
-            <p>A soft mix of definition and texture with a customizable finish.</p>
-          </article>
-          <article class="service-card">
-            <span class="service-number">03</span>
-            <h3>Volume</h3>
-            <p>Fuller, lightweight dimension while keeping the set soft and refined.</p>
-          </article>
-        </div>
-
-        <div class="center-action">
-          <a class="button primary" href="https://book.squareup.com/appointments/d22i9h6vk9ly7q/location/L72HHS5VJYE87/services" target="_blank" rel="noopener">See All Services on Square</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section work" id="work">
-      <div class="container">
-        <div class="work-heading">
-          <div>
-            <p class="eyebrow">Recent work</p>
-            <h2>The LashKStudio edit.</h2>
-          </div>
-          <p class="work-intro">A closer look at recent sets created by Kira. Each appointment is customized to the client rather than copied from a preset look.</p>
-        </div>
-
-        <div class="editorial-gallery">
-          <figure class="work-item work-tall">
-            <img src="assets/lash-2.jpeg" alt="Custom lash set by LashKStudio" loading="lazy" />
-          </figure>
-          <figure class="work-item work-wide">
-            <img src="assets/lash-4.jpeg" alt="Custom lash set by LashKStudio" loading="lazy" />
-          </figure>
-          <figure class="work-item">
-            <img src="assets/lash-3.jpeg" alt="Volume lash set by LashKStudio" loading="lazy" />
-          </figure>
-          <figure class="work-item">
-            <img src="assets/lash-5.jpeg" alt="Custom lash set by LashKStudio" loading="lazy" />
-          </figure>
-        </div>
-      </div>
-    </section>
-
-    <section class="section about" id="about">
-      <div class="container about-grid">
-        <div class="about-image-wrap">
-          <img src="assets/kira-new-profile.jpeg" alt="Kira, owner and lash artist at LashKStudio" loading="lazy" />
-          <div class="about-badge">Lash artist<br>Calgary, AB</div>
-        </div>
-
-        <div class="about-copy">
-          <p class="eyebrow">Meet your artist</p>
-          <h2>Beauty with intention.</h2>
-          <p>LashKStudio is focused on creating sets that complement your natural features instead of giving every client the same look.</p>
-          <p>From mapping to styling, each appointment is approached with softness, balance and attention to detail so your lashes feel personal to you.</p>
-          <p class="signature">Kira</p>
-          <a class="button primary" href="https://book.squareup.com/appointments/d22i9h6vk9ly7q/location/L72HHS5VJYE87/services" target="_blank" rel="noopener">Reserve Your Appointment</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="model-section">
-      <div class="container model-card">
-        <div class="model-copy">
-          <p class="eyebrow">Model opportunities</p>
-          <h2>Want to model for LashKStudio?</h2>
-          <p>Use the model inquiry form for content, technique and promotional model opportunities. Requirements and availability may vary.</p>
-        </div>
-        <a class="button primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdq_LtjnpaMY2aVmQvTQLsHjSi1AeCd95UHtKdJkZ18gis5ZA/viewform" target="_blank" rel="noopener">Submit Model Inquiry</a>
-      </div>
-    </section>
-
-    <section class="booking-banner">
-      <div class="container booking-banner-inner">
+      <div class="hero-stats">
         <div>
-          <p class="eyebrow">Ready when you are</p>
-          <h2>Book directly through Square.</h2>
-          <p>See Kira's live availability, select your service and complete your appointment in one place.</p>
+          <span class="hero-stat-num">500+</span>
+          <span class="hero-stat-label">Happy clients</span>
         </div>
-        <a class="button dark" href="https://book.squareup.com/appointments/d22i9h6vk9ly7q/location/L72HHS5VJYE87/services" target="_blank" rel="noopener">View Availability</a>
-      </div>
-    </section>
-
-    <section class="section faq" id="faq">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Before your appointment</p>
-          <h2>Frequently asked.</h2>
+        <div>
+          <span class="hero-stat-num">4.9★</span>
+          <span class="hero-stat-label">Average rating</span>
         </div>
-        <div class="faq-list">
-          <details>
-            <summary>How should I prepare for my appointment?</summary>
-            <p>Please arrive with clean lashes and no mascara, eyeliner, strip-lash glue or oil-based products around the eye area.</p>
-          </details>
-          <details>
-            <summary>How long will my appointment take?</summary>
-            <p>Appointment length depends on the service selected. Square shows the estimated duration before you confirm your booking.</p>
-          </details>
-          <details>
-            <summary>How often should I book a fill?</summary>
-            <p>Most clients return every two to three weeks depending on natural lash growth, aftercare and desired fullness.</p>
-          </details>
-          <details>
-            <summary>Where can I view booking policies?</summary>
-            <p>Please review the policies shown during your Square booking process before confirming your appointment.</p>
-          </details>
+        <div>
+          <span class="hero-stat-num">5yr</span>
+          <span class="hero-stat-label">Experience</span>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+    <div class="hero-right">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
 
+      <div class="floating-tag ft-1">
+        <div class="tag-dot"></div>
+        Custom Nail Art
+      </div>
+      <div class="floating-tag ft-2">
+        <div class="tag-dot"></div>
+        Premium Products Only
+      </div>
+      <div class="floating-tag ft-3">
+        <div class="tag-dot"></div>
+        Fully Sanitized Studio
+      </div>
+
+      <div class="nails-visual">
+        <div class="nail-row">
+          <div class="nail n1 float-2 art-floral"></div>
+          <div class="nail n2 float-1"></div>
+          <div class="nail n3 float-3 art-star"></div>
+          <div class="nail n4 float-2"></div>
+          <div class="nail n5 float-1 art-gem"></div>
+        </div>
+        <div class="nail-row" style="margin-left:18px;">
+          <div class="nail n6 float-3"></div>
+          <div class="nail n7 float-1 art-floral"></div>
+          <div class="nail n8 float-2 art-gem"></div>
+          <div class="nail n9 float-3"></div>
+          <div class="nail n10 float-1"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="marquee-item">Gel Manicures</span><span class="marquee-dot">✦</span>
+      <span class="marquee-item">Custom Nail Art</span><span class="marquee-dot">✦</span>
+      <span class="marquee-item">Acrylic Sets</span><span class="marquee-dot">✦</span>
+      <span class="marquee-item">Builder Gel</span><span class="marquee-dot">✦</span>
+      <span class="marquee-item">Spa Pedicures</span><span class="marquee-dot">✦</span>
+      <span class="marquee-item">Chrome & Foil</span><span class="marquee-dot">✦</span>
+      <span class="marquee-item">Press-On Sets</span><span class="marquee-dot">✦</span>
+      <span class="marquee-item">Nail Repair</span><span class="marquee-dot">✦</span>
+      <!-- duplicate for seamless loop -->
+      <span class="marquee-item">Gel Manicures</span><span class="marquee-dot">✦</span>
+      <span class="marquee-item">Custom Nail Art</span><span class="marquee-dot">✦</span>
+      <span class="marquee-item">Acrylic Sets</span><span class="marquee-dot">✦</span>
+      <span class="marquee-item">Builder Gel</span><span class="marquee-dot">✦</span>
+      <span class="marquee-item">Spa Pedicures</span><span class="marquee-dot">✦</span>
+      <span class="marquee-item">Chrome & Foil</span><span class="marquee-dot">✦</span>
+      <span class="marquee-item">Press-On Sets</span><span class="marquee-dot">✦</span>
+      <span class="marquee-item">Nail Repair</span><span class="marquee-dot">✦</span>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="services-bg-circle"></div>
+    <div class="services-header reveal">
+      <div>
+        <div class="section-label">What I Offer</div>
+        <h2 class="section-heading">Luxury services <em>curated</em><br>for you</h2>
+      </div>
+      <p class="services-intro">
+        Every service is performed with meticulous care using only cruelty-free, professional-grade products. Whether you want a clean classic or an editorial statement set, I've got you.
+      </p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon-wrap">💅</div>
+        <span class="service-tag">Classic</span>
+        <h3 class="service-name">Classic Manicure</h3>
+        <p class="service-desc">A timeless, perfectly polished look. Ideal for those who love clean, minimal nails.</p>
+        <ul class="service-includes">
+          <li>Shape & file to desired length</li>
+          <li>Cuticle care & cleanup</li>
+          <li>Hand massage</li>
+          <li>Regular polish of your choice</li>
+        </ul>
+        <div class="service-price">
+          <span class="price-label">from</span>
+          <span class="price-amount">$35</span>
+        </div>
+      </div>
+      <div class="service-card featured reveal">
+        <div class="service-icon-wrap">✨</div>
+        <span class="service-tag">Most Popular</span>
+        <h3 class="service-name">Gel Manicure</h3>
+        <p class="service-desc">Long-lasting, chip-free colour that stays flawless for up to 3 weeks. My most requested service.</p>
+        <ul class="service-includes">
+          <li>Shape, file & cuticle work</li>
+          <li>Gel base, colour & top coat</li>
+          <li>LED cure at every layer</li>
+          <li>Moisturizing cuticle oil finish</li>
+        </ul>
+        <div class="service-price">
+          <span class="price-label">from</span>
+          <span class="price-amount">$55</span>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon-wrap">💎</div>
+        <span class="service-tag">Extensions</span>
+        <h3 class="service-name">Acrylic Full Set</h3>
+        <p class="service-desc">Sculpted acrylic extensions built to your desired length, shape, and finish.</p>
+        <ul class="service-includes">
+          <li>Natural or sculpted tips</li>
+          <li>Custom shape (almond, coffin, stiletto…)</li>
+          <li>Gel polish colour included</li>
+          <li>Nail prep & dehydration</li>
+        </ul>
+        <div class="service-price">
+          <span class="price-label">from</span>
+          <span class="price-amount">$75</span>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon-wrap">🎨</div>
+        <span class="service-tag">Artistry</span>
+        <h3 class="service-name">Nail Art</h3>
+        <p class="service-desc">From delicate florals to abstract 3D designs — your nails are my canvas.</p>
+        <ul class="service-includes">
+          <li>Simple line & dot work</li>
+          <li>Florals, swirls, abstract</li>
+          <li>Encapsulated designs</li>
+          <li>3D gems & charms add-on</li>
+        </ul>
+        <div class="service-price">
+          <span class="price-label">from</span>
+          <span class="price-amount">$3/nail</span>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon-wrap">💪</div>
+        <span class="service-tag">Strength</span>
+        <h3 class="service-name">Builder Gel (BIAB)</h3>
+        <p class="service-desc">Builder-in-a-bottle overlay for natural nail strengthening and flexible extensions.</p>
+        <ul class="service-includes">
+          <li>Overlay or short extensions</li>
+          <li>Flexible & damage-reducing</li>
+          <li>Natural-looking finish</li>
+          <li>Gel colour of your choice</li>
+        </ul>
+        <div class="service-price">
+          <span class="price-label">from</span>
+          <span class="price-amount">$70</span>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon-wrap">🌿</div>
+        <span class="service-tag">Feet</span>
+        <h3 class="service-name">Luxury Spa Pedicure</h3>
+        <p class="service-desc">A full relaxation experience for your feet — not just a polish change.</p>
+        <ul class="service-includes">
+          <li>Aromatic foot soak</li>
+          <li>Callus & exfoliation treatment</li>
+          <li>Extended foot & calf massage</li>
+          <li>Gel polish included</li>
+        </ul>
+        <div class="service-price">
+          <span class="price-label">from</span>
+          <span class="price-amount">$60</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing">
+    <div class="section-label reveal">Transparent Pricing</div>
+    <h2 class="section-heading reveal">Full <em>price list</em></h2>
+    <div class="pricing-layout">
+      <div class="pricing-sidebar reveal">
+        <p style="font-size:0.9rem;color:var(--text-body);line-height:1.85;">
+          All prices in CAD. Exact pricing may vary based on nail condition, length, and complexity. A personalized quote is always given before your appointment begins — no surprises.
+        </p>
+        <div class="pricing-note">
+          <h4>Booking Policy</h4>
+          <p>A non-refundable deposit of <strong>$20</strong> is required to secure your appointment. This goes toward your service total.</p>
+          <ul class="policy-list">
+            <li>48-hour cancellation notice required</li>
+            <li>Late arrivals over 15 min may be rescheduled</li>
+            <li>New clients welcome — please arrive 5 min early</li>
+            <li>Patch test required for first-time acrylic clients</li>
+            <li>Children under 12 must be accompanied by an adult</li>
+          </ul>
+        </div>
+      </div>
+      <div class="pricing-table reveal">
+        <div class="pricing-category">Manicure Services</div>
+        <div class="pricing-row">
+          <div><div class="pr-name">Classic Manicure</div><div class="pr-detail">Shape, cuticle care, regular polish</div></div>
+          <div class="pr-price">$35</div>
+        </div>
+        <div class="pricing-row">
+          <div><div class="pr-name">Gel Manicure</div><div class="pr-detail">Gel colour, up to 3 weeks wear</div></div>
+          <div class="pr-price">$55</div>
+        </div>
+        <div class="pricing-row">
+          <div><div class="pr-name">Gel Removal</div><div class="pr-detail">Safe soak-off, nourishing treatment</div></div>
+          <div class="pr-price">$20</div>
+        </div>
+        <div class="pricing-row">
+          <div><div class="pr-name">Gel Removal + New Gel Set</div><div class="pr-detail">Remove old + fresh gel application</div></div>
+          <div class="pr-price">$65</div>
+        </div>
+
+        <div class="pricing-category">Acrylic & Extensions</div>
+        <div class="pricing-row">
+          <div><div class="pr-name">Acrylic Full Set</div><div class="pr-detail">Tips or sculpted, includes gel colour</div></div>
+          <div class="pr-price">$75</div>
+        </div>
+        <div class="pricing-row">
+          <div><div class="pr-name">Acrylic Infill / Fill</div><div class="pr-detail">Every 2–3 weeks, growth fill</div></div>
+          <div class="pr-price">$50</div>
+        </div>
+        <div class="pricing-row">
+          <div><div class="pr-name">Acrylic Removal</div><div class="pr-detail">Soak-off with nail care included</div></div>
+          <div class="pr-price">$30</div>
+        </div>
+        <div class="pricing-row">
+          <div><div class="pr-name">Builder Gel (BIAB) Set</div><div class="pr-detail">Overlay or short extensions</div></div>
+          <div class="pr-price">$70</div>
+        </div>
+        <div class="pricing-row">
+          <div><div class="pr-name">Builder Gel Infill</div><div class="pr-detail">Growth fill, every 3–4 weeks</div></div>
+          <div class="pr-price">$55</div>
+        </div>
+
+        <div class="pricing-category">Pedicure Services</div>
+        <div class="pricing-row">
+          <div><div class="pr-name">Basic Pedicure</div><div class="pr-detail">Soak, shape, regular polish</div></div>
+          <div class="pr-price">$40</div>
+        </div>
+        <div class="pricing-row">
+          <div><div class="pr-name">Luxury Spa Pedicure</div><div class="pr-detail">Full soak, scrub, massage + gel polish</div></div>
+          <div class="pr-price">$60</div>
+        </div>
+        <div class="pricing-row">
+          <div><div class="pr-name">Gel Pedicure</div><div class="pr-detail">Gel colour only, long-lasting finish</div></div>
+          <div class="pr-price">$50</div>
+        </div>
+
+        <div class="pricing-category">Add-Ons & Nail Art</div>
+        <div class="pricing-row">
+          <div><div class="pr-name">Nail Art — Simple</div><div class="pr-detail">Lines, dots, simple geometric (per nail)</div></div>
+          <div class="pr-price">$3/nail</div>
+        </div>
+        <div class="pricing-row">
+          <div><div class="pr-name">Nail Art — Detailed</div><div class="pr-detail">Florals, portraits, freehand (per nail)</div></div>
+          <div class="pr-price">$5+/nail</div>
+        </div>
+        <div class="pricing-row">
+          <div><div class="pr-name">Chrome / Mirror Powder</div><div class="pr-detail">Add-on to any service</div></div>
+          <div class="pr-price">$15</div>
+        </div>
+        <div class="pricing-row">
+          <div><div class="pr-name">Foil / Cat Eye</div><div class="pr-detail">Holographic or magnetic effect</div></div>
+          <div class="pr-price">$12</div>
+        </div>
+        <div class="pricing-row">
+          <div><div class="pr-name">3D Gems & Charms</div><div class="pr-detail">Swarovski or resin decorations</div></div>
+          <div class="pr-price">$5+</div>
+        </div>
+        <div class="pricing-row">
+          <div><div class="pr-name">Nail Repair</div><div class="pr-detail">Single nail fix (from existing set)</div></div>
+          <div class="pr-price">$8</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-photo-wrap reveal">
+        <div class="about-photo-tag">📍 Calgary, AB</div>
+        <div class="about-photo-bg">
+          <div class="about-monogram">X</div>
+        </div>
+        <div class="about-photo-badge">
+          <strong>5+</strong>
+          Years of nail artistry
+        </div>
+      </div>
+      <div class="about-text reveal">
+        <div class="section-label">Meet Your Nail Tech</div>
+        <h2 class="section-heading">Hi, I'm <em>Xia</em> —<br>your nail artist</h2>
+        <p class="about-body">
+          I'm a certified, independent nail technician based in Calgary with over 5 years of experience turning nails into wearable art. My studio is a calm, judgment-free space where your vision always comes first — whether that's a perfectly clean nude set or an elaborate hand-painted design.
+        </p>
+        <p class="about-body" style="margin-top:-1rem;">
+          I believe healthy nails are beautiful nails. Every service I perform prioritizes the integrity of your natural nail, using only professional-grade, cruelty-free products that I'd use on myself.
+        </p>
+        <div class="about-values">
+          <div class="value-item">
+            <div class="value-icon">🌸</div>
+            <div class="value-title">Clean Studio</div>
+            <div class="value-text">Full sanitization between every client, single-use tools</div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon">✨</div>
+            <div class="value-title">Premium Products</div>
+            <div class="value-text">Cruelty-free, professional-grade brands only</div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon">🎨</div>
+            <div class="value-title">Nail Art Specialist</div>
+            <div class="value-text">Custom designs for every style and occasion</div>
+          </div>
+          <div class="value-item">
+            <div class="value-icon">💕</div>
+            <div class="value-title">Client-First</div>
+            <div class="value-text">Your comfort, preference, and nail health always come first</div>
+          </div>
+        </div>
+        <p style="font-size:0.78rem;color:var(--text-soft);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.7rem;">Certifications & Training</p>
+        <div class="certs">
+          <span class="cert-badge">Gel Nail Technician</span>
+          <span class="cert-badge">Acrylic Nail Technician</span>
+          <span class="cert-badge">Nail Art Specialist</span>
+          <span class="cert-badge">Pedicure & Foot Care</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="testimonials-header reveal">
+      <div class="section-label">Client Love</div>
+      <h2 class="section-heading">What my clients <em>say</em></h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-quote">"Xia is absolutely incredible. I showed her a reference photo and she recreated it perfectly — down to every little detail. My nails have never looked this good."</p>
+        <div class="t-author">
+          <div class="t-avatar">SR</div>
+          <div>
+            <div class="t-name">Sophie R.</div>
+            <div class="t-sub">Regular client · Gel set</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-quote">"I've been going to Xia for over a year and I would never go anywhere else. She genuinely cares about your nail health and always recommends what's best for you, not just the most expensive service."</p>
+        <div class="t-author">
+          <div class="t-avatar">MK</div>
+          <div>
+            <div class="t-name">Maya K.</div>
+            <div class="t-sub">Loyal client · Acrylic fills</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-quote">"The studio atmosphere is so relaxing and clean. I always leave feeling like I've had a full spa day. The nail art she does is genuinely one-of-a-kind."</p>
+        <div class="t-author">
+          <div class="t-avatar">TC</div>
+          <div>
+            <div class="t-name">Taylor C.</div>
+            <div class="t-sub">New client · Spa pedicure</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-quote">"My nails lasted almost 4 weeks with zero chips. She is extremely precise and patient. Truly the best nail tech I've ever been to in Calgary."</p>
+        <div class="t-author">
+          <div class="t-avatar">JL</div>
+          <div>
+            <div class="t-name">Jess L.</div>
+            <div class="t-sub">Regular client · Builder gel</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-quote">"Booked a bridal set for my wedding and Xia absolutely delivered. My wedding party was obsessed with how beautiful the matching sets turned out."</p>
+        <div class="t-author">
+          <div class="t-avatar">AL</div>
+          <div>
+            <div class="t-name">Ava L.</div>
+            <div class="t-sub">Bridal client · Custom nail art</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-quote">"She made me feel so comfortable from my very first visit. I was nervous about trying acrylics but she walked me through everything and the result was stunning."</p>
+        <div class="t-author">
+          <div class="t-avatar">PM</div>
+          <div>
+            <div class="t-name">Priya M.</div>
+            <div class="t-sub">First-time client · Acrylic set</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="faq-layout">
+      <div class="faq-aside reveal">
+        <div class="section-label">FAQ</div>
+        <h2 class="section-heading">Questions?<br><em>I've got<br>answers.</em></h2>
+        <p class="faq-aside-text">
+          If you don't see your question here, feel free to reach out on Instagram — I'm always happy to chat and help you figure out what service is right for you.
+        </p>
+        <a href="#booking" class="btn-pink">Send a Message</a>
+      </div>
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFAQ(this)">
+            How do I book an appointment?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>The easiest way to book is to DM me on Instagram @NailsByXia or fill out the booking form on this page. I'll confirm your appointment within 24 hours and send a deposit link to secure your spot.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFAQ(this)">
+            How long does a typical appointment take?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>A gel manicure takes about 60–75 minutes. Acrylic sets typically take 90–120 minutes. Appointments with nail art may take longer depending on the design complexity. I'll always give you a realistic time estimate when you book.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFAQ(this)">
+            Do you offer group bookings for events?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes! I love doing bridal parties, birthdays, and girls' nights. Group bookings for 3+ people receive priority scheduling and a small group discount. Reach out directly to discuss availability and packages.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFAQ(this)">
+            What should I do to prepare for my appointment?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Come with clean, polish-free nails if possible. Avoid moisturizing your hands/feet the morning of. For gel or acrylic services, skip hand lotion before arriving. And bring inspo photos — the more the better!</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFAQ(this)">
+            Are your products safe for sensitive skin?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>I use professional-grade, cruelty-free products. If you have known allergies or sensitivities, please let me know when booking so I can recommend the most suitable service and products for you.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFAQ(this)">
+            What's your cancellation and rescheduling policy?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>I ask for at least 48 hours notice to cancel or reschedule. Late cancellations or no-shows may forfeit the booking deposit. Life happens though — reach out as soon as you can and I'll always do my best to accommodate you.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFAQ(this)">
+            Do you travel for appointments or work from a studio?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>I currently work from my home studio in Calgary. For group events or bridal parties, mobile bookings may be available — please inquire directly for travel availability and any additional fees.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING -->
+  <section id="booking">
+    <div class="booking-bg-blob bb-1"></div>
+    <div class="booking-bg-blob bb-2"></div>
+    <div class="booking-grid">
+      <div class="booking-left reveal">
+        <div class="section-label">Let's Connect</div>
+        <h2 class="section-heading">Ready for<br><em>beautiful</em> nails?</h2>
+        <p class="booking-desc">
+          Fill out the form and I'll get back to you within 24 hours to confirm your appointment. Can't wait to create something beautiful for you.
+        </p>
+        <div class="booking-contact-items">
+          <div class="bc-item">
+            <div class="bc-icon">📸</div>
+            <div>
+              <div class="bc-label">Instagram</div>
+              <div class="bc-value">@NailsByXia</div>
+            </div>
+          </div>
+          <div class="bc-item">
+            <div class="bc-icon">📍</div>
+            <div>
+              <div class="bc-label">Location</div>
+              <div class="bc-value">Calgary, Alberta, Canada</div>
+            </div>
+          </div>
+          <div class="bc-item">
+            <div class="bc-icon">🕐</div>
+            <div>
+              <div class="bc-label">Studio Hours</div>
+              <div class="bc-value">Tue–Fri: 10am – 7pm · Sat: 9am – 6pm</div>
+            </div>
+          </div>
+          <div class="bc-item">
+            <div class="bc-icon">💬</div>
+            <div>
+              <div class="bc-label">Response Time</div>
+              <div class="bc-value">Within 24 hours</div>
+            </div>
+          </div>
+        </div>
+        <div class="social-icons">
+          <a class="social-btn" href="#" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a class="social-btn" href="#" aria-label="TikTok">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+          </a>
+          <a class="social-btn" href="#" aria-label="Pinterest">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.236 2.636 7.855 6.356 9.312-.088-.791-.167-2.005.035-2.868.181-.78 1.172-4.97 1.172-4.97s-.299-.598-.299-1.482c0-1.388.806-2.428 1.808-2.428.853 0 1.266.641 1.266 1.408 0 .858-.546 2.14-.828 3.33-.236.995.499 1.806 1.476 1.806 1.772 0 3.137-1.868 3.137-4.561 0-2.387-1.715-4.057-4.163-4.057-2.837 0-4.5 2.127-4.5 4.328 0 .857.33 1.774.741 2.276a.3.3 0 0 1 .069.284c-.075.314-.243.995-.276 1.134-.044.183-.147.222-.34.134-1.249-.581-2.03-2.407-2.03-3.874 0-3.154 2.292-6.052 6.608-6.052 3.469 0 6.165 2.473 6.165 5.776 0 3.447-2.173 6.22-5.19 6.22-1.013 0-1.966-.527-2.292-1.148l-.623 2.378c-.226.869-.835 1.958-1.244 2.621.937.29 1.931.446 2.962.446 5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="booking-form-wrap reveal">
+        <h3 class="form-heading">Book your appointment</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="Your name" />
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Last name" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="you@email.com" />
+        </div>
+        <div class="form-group">
+          <label>Phone (optional)</label>
+          <input type="tel" placeholder="+1 (403) 000-0000" />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Service</label>
+            <select>
+              <option value="">Select a service…</option>
+              <option>Classic Manicure — $35</option>
+              <option>Gel Manicure — $55</option>
+              <option>Acrylic Full Set — $75</option>
+              <option>Builder Gel (BIAB) — $70</option>
+              <option>Acrylic Infill — $50</option>
+              <option>Gel Removal + New Set — $65</option>
+              <option>Luxury Spa Pedicure — $60</option>
+              <option>Nail Art (add-on)</option>
+              <option>Group / Event Booking</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Preferred Date</label>
+            <input type="date" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Inspo / Notes</label>
+          <textarea placeholder="Share a description, colour preferences, or link to inspo photos…"></textarea>
+        </div>
+        <button class="form-submit" onclick="handleSubmit(this)">Send Booking Request ✦</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer>
-    <div class="container footer-grid">
-      <div>
-        <div class="footer-brand">LashKStudio</div>
-        <p>Custom lash extensions in Calgary with a soft, refined approach.</p>
-      </div>
-      <div>
-        <p class="footer-title">Explore</p>
-        <a href="#services">Services</a>
-        <a href="#work">Recent Work</a>
-        <a href="#about">About Kira</a>
-        <a href="#faq">FAQ</a>
-      </div>
-      <div>
-        <p class="footer-title">Book + Model</p>
-        <a href="https://book.squareup.com/appointments/d22i9h6vk9ly7q/location/L72HHS5VJYE87/services" target="_blank" rel="noopener">Book on Square</a>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdq_LtjnpaMY2aVmQvTQLsHjSi1AeCd95UHtKdJkZ18gis5ZA/viewform" target="_blank" rel="noopener">Model Inquiry</a>
-        <a href="mailto:lashkstudio1@gmail.com">lashkstudio1@gmail.com</a>
-      </div>
-    </div>
-    <div class="container footer-bottom">
-      <span>© 2026 LashKStudio</span>
-      <span>Calgary, Alberta</span>
-    </div>
-    <div class="website-credit">
-  <span>Website designed &amp; developed by</span>
-  <a href="https://zoroliq.com" target="_blank" rel="noopener">
-    Zoroliq
-  </a>
-</div>
+    <div class="footer-logo">Nails<span>By</span>Xia</div>
+    <p class="footer-copy">© 2026 NailsByXia · Calgary, AB · All rights reserved</p>
+    <ul class="footer-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#booking">Book</a></li>
+    </ul>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    // Custom cursor
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursorRing');
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+    function animateCursor() {
+      cursor.style.left = mx + 'px'; cursor.style.top = my + 'px';
+      rx += (mx - rx) * 0.12; ry += (my - ry) * 0.12;
+      ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+    document.querySelectorAll('a, button, .service-card, .testimonial-card').forEach(el => {
+      el.addEventListener('mouseenter', () => { cursor.style.transform = 'translate(-50%,-50%) scale(2.5)'; cursor.style.background = 'var(--pink-300)'; ring.style.transform = 'translate(-50%,-50%) scale(1.4)'; });
+      el.addEventListener('mouseleave', () => { cursor.style.transform = 'translate(-50%,-50%) scale(1)'; cursor.style.background = 'var(--pink-400)'; ring.style.transform = 'translate(-50%,-50%) scale(1)'; });
+    });
+
+    // Navbar scroll
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => { if (e.isIntersecting) { e.target.style.transitionDelay = (i * 0.07) + 's'; e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    reveals.forEach(el => io.observe(el));
+
+    // FAQ toggle
+    function toggleFAQ(btn) {
+      const answer = btn.nextElementSibling;
+      const isOpen = answer.classList.contains('open');
+      document.querySelectorAll('.faq-answer.open').forEach(a => { a.classList.remove('open'); a.previousElementSibling.classList.remove('active'); });
+      if (!isOpen) { answer.classList.add('open'); btn.classList.add('active'); }
+    }
+
+    // Form submit
+    function handleSubmit(btn) {
+      btn.textContent = '✓ Request Sent — I'll be in touch soon!';
+      btn.style.background = 'var(--mauve-deep)';
+      btn.disabled = true;
+    }
+  </script>
 </body>
 </html>
